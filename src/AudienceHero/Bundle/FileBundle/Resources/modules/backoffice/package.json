@@ -1,0 +1,7 @@
+{
+  "name": "@audiencehero-backoffice/file",
+  "version": "1.0.0",
+  "dependencies": {
+    "immutable": "^3.8.2"
+  }
+}

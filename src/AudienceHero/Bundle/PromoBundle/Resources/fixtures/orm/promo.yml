@@ -1,0 +1,68 @@
+AudienceHero\Bundle\PromoBundle\Entity\Promo:
+    alice_promo:
+        owner: '@alice'
+        reference: 'Promo Jazz #1'
+        name: 'Alice Jazz Tracks'
+        artwork: '@alice_file_jpeg1'
+        description: '<text()>'
+        label: 'ALICE Label'
+        catalog: 'ALICE-001'
+        genre: 'Jazz'
+        releaseDate: 'December 2018'
+        download: '@alice_file_archive1'
+        mailing: '@alice_promo_mailing'
+        player: '@alice_player'
+        createdAt: '<dateTimeBetween("-1 month", "-1 month")>'
+        updatedAt: '<dateTimeBetween("-1 month", "-1 month")>'
+
+AudienceHero\Bundle\MailingCampaignBundle\Entity\Mailing:
+    alice_promo_mailing:
+        owner: '@alice'
+        isInternal: true
+        personEmail: '@alice_verified_email'
+        fromName: 'Alice'
+        status: 'delivering'
+        contactsGroup: '@alice_contacts_group_pros'
+        createdAt: '<dateTimeBetween("-1 month", "-1 month")>'
+        updatedAt: '<dateTimeBetween("-1 month", "-1 month")>'
+
+AudienceHero\Bundle\MailingCampaignBundle\Entity\MailingRecipient:
+    alice_promo_mailing_mailing_recipient (template):
+        owner: '@alice'
+        mailing: '@alice_promo_mailing'
+        sentAt: '<dateTimeBetween("-3 weeks", "-3 weeks")>'
+        createdAt: '<dateTimeBetween("-3 weeks", "now")>'
+        updatedAt: '<dateTimeBetween("-3 weeks", "now")>'
+        status: 'sent'
+
+    alice_promo_mailing_mailing_recipient_sent{1..60} (extends alice_promo_mailing_mailing_recipient):
+        contactsGroupContact: '@alice_contacts_group_contact_pros<current()>'
+        status: 'sent'
+    alice_promo_mailing_mailing_recipient_opened{61..90} (extends alice_promo_mailing_mailing_recipient):
+        contactsGroupContact: '@alice_contacts_group_contact_pros<current()>'
+        status: 'opened'
+        countMailOpen: '<numberBetween(1, 4)>'
+    alice_promo_mailing_mailing_recipient_click{91..100} (extends alice_promo_mailing_mailing_recipient):
+        contactsGroupContact: '@alice_contacts_group_contact_pros<current()>'
+        status: 'opened'
+        countMailOpen: '<numberBetween(1, 4)>'
+        countMailClick: 1
+
+AudienceHero\Bundle\PromoBundle\Entity\PromoRecipient:
+    alice_promo_promo_recipient_sent{1..60}:
+        owner: '@alice'
+        mailingRecipient: '@alice_promo_mailing_mailing_recipient_sent<current()>'
+        promo: '@alice_promo'
+    alice_promo_promo_recipient_opened{61..90}:
+        owner: '@alice'
+        mailingRecipient: '@alice_promo_mailing_mailing_recipient_opened<current()>'
+        promo: '@alice_promo'
+    alice_promo_promo_recipient_click{91..100}:
+        owner: '@alice'
+        mailingRecipient: '@alice_promo_mailing_mailing_recipient_click<current()>'
+        promo: '@alice_promo'
+        countVisit: '<numberBetween(1,2)>'
+        rating: '<numberBetween(1,5)>'
+        favoriteTrack: '@alice_player_track<numberBetween(1,3)>'
+        feedback: '<sentence()>'
+

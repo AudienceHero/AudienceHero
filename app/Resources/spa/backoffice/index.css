@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.ah-card-field {
+    margin-right: 1em;
+}
+
+.ah-card-field:last-child {
+    margin-right: 0;
+}

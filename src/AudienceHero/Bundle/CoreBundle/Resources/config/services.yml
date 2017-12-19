@@ -1,0 +1,81 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AudienceHero\Bundle\CoreBundle\:
+        resource: '../../*'
+        exclude: '../../{Action,Entity,Repository,Tests}'
+
+    AudienceHero\Bundle\CoreBundle\Action\:
+        public: true
+        resource: '../../Action/*'
+        tags: ['controller.service_arguments']
+
+    AudienceHero\Bundle\CoreBundle\EventListener\PersonEmailEventSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
+    AudienceHero\Bundle\CoreBundle\EventListener\LinkableEntityEventSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
+    AudienceHero\Bundle\CoreBundle\Repository\PersonRepository:
+        public: true
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - AudienceHero\Bundle\CoreBundle\Entity\Person
+
+    AudienceHero\Bundle\CoreBundle\Repository\PersonEmailRepository:
+        public: true
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - AudienceHero\Bundle\CoreBundle\Entity\PersonEmail
+
+    AudienceHero\Bundle\CoreBundle\Behavior\Ownable\Doctrine\ORM\Extension\OwnerExtension:
+        tags:
+            -  { name: 'api_platform.doctrine.orm.query_extension.collection', priority: 128}
+            -  { name: 'api_platform.doctrine.orm.query_extension.item' }
+
+    audiencehero_core.security.user_checker:
+        class: 'AudienceHero\Bundle\CoreBundle\Security\Core\User\UserChecker'
+
+    Mailgun\Mailgun:
+        public: true
+
+    audience_hero.core.api.order.timestampable:
+        autoconfigure: false
+        autowire: false
+        public: false
+        parent:    'api_platform.doctrine.orm.order_filter'
+        arguments: [ { createdAt: ~, updatedAt: ~} ]
+        tags:      [ { name: 'api_platform.filter', id: 'audience_hero.api.order.timestampable' } ]
+
+    audience_hero.person_email.api.boolean_filter:
+        autoconfigure: false
+        autowire: false
+        public: false
+        parent:    'api_platform.doctrine.orm.boolean_filter'
+        arguments: [ { isVerified: ~ } ]
+        tags:      [ { name: 'api_platform.filter', id: 'audience_hero.person_email.boolean' } ]
+
+    AudienceHero\Bundle\CoreBundle\Behavior\Ownable\Serializer\OwnerContextBuilder:
+        decorates: 'api_platform.serializer.context_builder'
+        decoration_inner_name: 'audience_hero.serializer.builder.owner.inner'
+        arguments: [ '@audience_hero.serializer.builder.owner.inner' ]
+
+    AudienceHero\Bundle\CoreBundle\Bridge\ApiPlatform\Filter\SearchFilter:
+        autowire: true
+        tags: ['api_platform.filter']
+
+    AudienceHero\Bundle\CoreBundle\Bridge\ApiPlatform\Filter\JsonContainsFilter:
+        autowire: true
+        tags: ['api_platform.filter']
+
+    audiencehero_core.api.iri_converter:
+        autowire: false
+        autoconfigure: false
+        public: true
+        parent: api_platform.iri_converter
+

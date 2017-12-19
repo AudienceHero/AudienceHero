@@ -1,0 +1,105 @@
+{% extends 'AudienceHeroCoreBundle::base.html.twig' %}
+
+{% trans_default_domain "contacts_group" %}
+
+{% block htmlattrs 'mozNoMarginBoxes' %}
+
+{% block style %}
+<style>
+    @media print {
+        @page { margin: 0; }
+        body { margin: 1.6cm; }
+    }
+</style>
+{% endblock %}
+
+{% set disable_support = true %}
+
+{% block navbar '' %}
+{% block footer '' %}
+
+{% block container_id '' %}
+
+{% block container %}
+    <style>
+        body {
+            padding-top: 35px;
+        }
+        .table tbody tr td {
+            border-top: none;
+        }
+    </style>
+    <table class="table hidden-print">
+        <tr>
+            <td align="center">
+                <button class="btn btn-default" onclick="window.print()"><i class="fa fa-print"></i> Print</button>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <td class="text-left" width="15%">
+                {% if contactsGroupForm.image %}
+                    <img class="img-responsive" src="{{ img(contactsGroupForm.image.uri, '0x100', {}) }}" />
+                {% endif %}
+            </td>
+            <td>
+                <h1 class="text-center">{{ contactsGroupForm.name }}</h1>
+            </td>
+            <td class="text-right" width="15%">
+                {% if contactsGroupForm.displayQRCode %}
+                    <img class="img-responsive pull-right" src="{{ qrcode_data_uri(url('contacts_groups_form_optin_request', {'id': contactsGroupForm.id}), {padding: 0, size: 100}) }}" />
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    {% if contactsGroupForm.description %}
+        <p class="lead text-center">{{ contactsGroupForm.description|nl2br }}</p>
+    {% endif %}
+    <table class="table table-striped table-bordered" style="margin-top: 35px;">
+        <thead>
+        <tr>
+            {% if contactsGroupForm.askName %}
+                <th width="25%">{% trans %}irl.th.name{% endtrans %}</th>
+            {% endif %}
+            {% if contactsGroupForm.askEmail %}
+                <th>{% trans %}irl.th.email{% endtrans %}</th>
+            {% endif %}
+            {% if contactsGroupForm.askPhone %}
+                <th width="15%">{% trans %}irl.th.phone{% endtrans %}</th>
+            {% endif %}
+            {% if contactsGroupForm.askCity %}
+                <th width="15%">{% trans %}irl.th.city{% endtrans %}</th>
+            {% endif %}
+            {% if contactsGroupForm.askCountry %}
+                <th width="15%">{% trans %}irl.th.country{% endtrans %}</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in range(0, 15) %}
+            <tr>
+                {% if contactsGroupForm.askName %}
+                    <td>&nbsp;</td>
+                {% endif %}
+                {% if contactsGroupForm.askEmail %}
+                    <td>&nbsp;</td>
+                {% endif %}
+                {% if contactsGroupForm.askPhone %}
+                    <td>&nbsp;</td>
+                {% endif %}
+                {% if contactsGroupForm.askCity %}
+                    <td>&nbsp;</td>
+                {% endif %}
+                {% if contactsGroupForm.askCountry %}
+                    <td>&nbsp;</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p class="text-small text-muted text-center"><small>Created with AudienceHero</small></p>
+{% endblock %}

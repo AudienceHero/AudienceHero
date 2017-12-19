@@ -1,0 +1,45 @@
+AudienceHero\Bundle\ContactBundle\Entity\Contact:
+  contact_bare (template):
+    name: <name()>
+    notes: <text()>
+    email: <safeEmail()>
+    city: 75%? <city()>
+    country: 75%? <countryCode()>
+
+  alice_contact{1..1000} (extends contact_bare):
+    owner: '@alice'
+  bob_contact{1001..2000} (extends contact_bare):
+    owner: '@bob'
+
+AudienceHero\Bundle\ContactBundle\Entity\ContactsGroup:
+    contacts_group_fans (template):
+        name: Fans
+        description: My fans
+    contacts_group_pros (template):
+        name: Pros
+        description: My contacts in the music business
+    alice_contacts_group_fans (extends contacts_group_fans):
+        owner: '@alice'
+        createdAt: '<dateTimeBetween("-3 months", "now")>'
+    alice_contacts_group_pros (extends contacts_group_pros):
+        owner: '@alice'
+        createdAt: '<dateTimeBetween("-3 months", "now")>'
+
+AudienceHero\Bundle\ContactBundle\Entity\ContactsGroupContact:
+    alice_contacts_group_contact_fans{1..489}:
+        contact: '@alice_contact<current()>'
+        group: '@alice_contacts_group_fans'
+        optinAt: '<dateTimeBetween("-3 months", "now")>'
+    alice_contacts_group_contact_pros{1..100}:
+        contact: '@alice_contact<current()>'
+        group: '@alice_contacts_group_pros'
+        optinAt: '<dateTimeBetween("-3 months", "now")>'
+
+AudienceHero\Bundle\ContactBundle\Entity\ContactsGroupForm:
+    alice_contacts_group_fans_form:
+        reference: 'Get phone numbers'
+        name: 'ALICE'
+        description: 'This is a form to get phone number against a Free Download'
+        owner: '@alice'
+        contactsGroup: '@alice_contacts_group_fans'
+        privacy: 'public'

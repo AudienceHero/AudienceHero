@@ -1,0 +1,113 @@
+AudienceHero\Bundle\PodcastBundle\Entity\PodcastChannel:
+    alice_podcast_channel:
+        owner: '@alice'
+        privacy: public
+        title: 'My favorite jazz tracks, by Alice'
+        subtitle: 'Here is a collection of my favorite jazz tracks'
+        description: '<text()>'
+        copyright: '(c) 2017 Alice'
+        author: '<name()>'
+        itunesBlock: false
+        isExplicit: true
+        isComplete: false
+        language: 'fr'
+        artwork: '@alice_file_jpeg1'
+        itunesOwnerEmail: 'alice@example.com'
+        itunesOwnerName: 'alice'
+        contactsGroupForm: '@alice_contacts_group_fans_form'
+        createdAt: '<dateTimeBetween("-6 months", "-5 months")>'
+        updatedAt: '<dateTimeBetween("-6 months", "-5 months")>'
+
+AudienceHero\Bundle\PodcastBundle\Entity\PodcastEpisode:
+    alice_podcast_episode1:
+        channel: '@alice_podcast_channel'
+        privacy: 'public'
+        file: '@alice_file_audio1'
+        title: 'Drunken Party'
+        subtitle: 'A cool jazz track that perfectly translate the feeling'
+        description: '<text()>'
+        createdAt: '<dateTimeBetween("-4 months", "-4 months")>'
+    alice_podcast_episode2:
+        channel: '@alice_podcast_channel'
+        file: '@alice_file_audio2'
+        privacy: public
+        title: 'Groovin'
+        subtitle: 'What is the Groove. Is it a metaphor of Life?'
+        description: '<text()>'
+        createdAt: '<dateTimeBetween("-3 months", "-3 months")>'
+    alice_podcast_episode3:
+        channel: '@alice_podcast_channel'
+        file: '@alice_file_audio3'
+        privacy: 'public'
+        title: 'Sloppy Bass Loop'
+        subtitle: 'I like sloppy. I like bass. I like loops.'
+        description: '<text()>'
+        privacy: 'public'
+        createdAt: '<dateTimeBetween("-2 months", "-2 months")>'
+
+AudienceHero\Bundle\ActivityBundle\Entity\Activity:
+    alice_podcast_channel_hits{1..100}:
+        type: 'podcast_channel.hit'
+        subjects:
+            podcast_channels: '@alice_podcast_channel'
+        ip: '<ipv4()>'
+        country: '<countryCode()>'
+        createdAt: '<dateTimeBetween("-6 months", "now")>'
+    alice_podcast_channel_feed_hits{1..100}:
+        type: 'podcast_channel.feed_hit'
+        subjects:
+            podcast_channels: '@alice_podcast_channel'
+        ip: '<ipv4()>'
+        country: '<countryCode()>'
+        createdAt: '<dateTimeBetween("-6 months", "now")>'
+    # Episode 1 hits & enclosure download
+    alice_podcast_episode1_hits{1..100}:
+        type: 'podcast_episode.hit'
+        subjects:
+            podcast_channels: '@alice_podcast_channel'
+            podcast_episodes: '@alice_podcast_episode1'
+        ip: '<ipv4()>'
+        country: '<countryCode()>'
+        createdAt: '<dateTimeBetween("-4 months", "now")>'
+    alice_podcast_episode1_enclosure_download{1..50}:
+        type: 'podcast_episode.enclosure_download'
+        subjects:
+            podcast_channels: '@alice_podcast_channel'
+            podcast_episodes: '@alice_podcast_episode1'
+        ip: '<ipv4()>'
+        country: '<countryCode()>'
+        createdAt: '<dateTimeBetween("-4 months", "now")>'
+    # Episode 2 hits & enclosure download
+    alice_podcast_episode2_hits{1..100}:
+        type: 'podcast_episode.hit'
+        subjects:
+            podcast_channels: '@alice_podcast_channel'
+            podcast_episodes: '@alice_podcast_episode2'
+        ip: '<ipv4()>'
+        country: '<countryCode()>'
+        createdAt: '<dateTimeBetween("-3 months", "now")>'
+    alice_podcast_episode2_enclosure_download{1..50}:
+        type: 'podcast_episode.enclosure_download'
+        subjects:
+            podcast_channels: '@alice_podcast_channel'
+            podcast_episodes: '@alice_podcast_episode2'
+        ip: '<ipv4()>'
+        country: '<countryCode()>'
+        createdAt: '<dateTimeBetween("-4 months", "now")>'
+    # Episode 3 hits & enclosure download
+    alice_podcast_episode3_hits{1..100}:
+        type: 'podcast_episode.hit'
+        subjects:
+            podcast_channels: '@alice_podcast_channel'
+            podcast_episodes: '@alice_podcast_episode3'
+        ip: '<ipv4()>'
+        country: '<countryCode()>'
+        createdAt: '<dateTimeBetween("-2 months", "now")>'
+    alice_podcast_episode3_enclosure_download{1..50}:
+        type: 'podcast_episode.enclosure_download'
+        subjects:
+            podcast_channels: '@alice_podcast_channel'
+            podcast_episodes: '@alice_podcast_episode3'
+        ip: '<ipv4()>'
+        country: '<countryCode()>'
+        createdAt: '<dateTimeBetween("-4 months", "now")>'

@@ -1,0 +1,75 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AudienceHero\Bundle\MailingCampaignBundle\Repository\MailingRepository:
+        public: true
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - AudienceHero\Bundle\MailingCampaignBundle\Entity\Mailing
+
+    AudienceHero\Bundle\MailingCampaignBundle\Repository\MailingRecipientRepository:
+        public: true
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - AudienceHero\Bundle\MailingCampaignBundle\Entity\MailingRecipient
+
+    AudienceHero\Bundle\MailingCampaignBundle\Repository\EmailEventRepository:
+        public: true
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - AudienceHero\Bundle\MailingCampaignBundle\Entity\EmailEvent
+
+    AudienceHero\Bundle\MailingCampaignBundle\Repository\EmailRepository:
+        public: true
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - AudienceHero\Bundle\MailingCampaignBundle\Entity\Email
+
+    AudienceHero\Bundle\MailingCampaignBundle\:
+        resource: '../../*'
+        exclude: '../../{Action,Entity,Repository,Tests}'
+
+    AudienceHero\Bundle\MailingCampaignBundle\Action\:
+        public: true
+        resource: '../../Action/*'
+        tags: ['controller.service_arguments']
+
+    twig.extension.string_loader:
+        class: Twig_Extension_StringLoader
+        tags:
+            - {name: twig.extension }
+
+    audiencehero.twig.security_policy:
+        class: Twig_Sandbox_SecurityPolicy
+        arguments:
+            - []
+            - ['escape']
+            - []
+            - []
+            - []
+            - []
+
+    twig.extension.sandbox:
+        class: Twig_Extension_Sandbox
+        arguments: ['@audiencehero.twig.security_policy']
+        tags:
+            - {name: twig.extension }
+
+    audience_hero.mailing_campaign.api.order_filter:
+        autowire: false,
+        autoconfigure: false
+        public: false
+        parent:    'api_platform.doctrine.orm.order_filter'
+        arguments: [ { subject: ~, status: ~ } ]
+        tags:      [ { name: 'api_platform.filter', id: 'audience_hero.mailing_campaign.order' } ]
+
+    audience_hero.mailing_campaign.api.boolean_filter:
+        autowire: false,
+        autoconfigure: false
+        public: false
+        parent:    'api_platform.doctrine.orm.boolean_filter'
+        arguments: [ { isInternal: ~ } ]
+        tags:      [ { name: 'api_platform.filter', id: 'audience_hero.mailing_campaign.boolean' } ]

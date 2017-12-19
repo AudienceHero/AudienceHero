@@ -1,0 +1,27 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    AudienceHero\Bundle\PromoBundle\:
+        resource: '../../*'
+        exclude: '../../{Controller,Action,Entity,Tests,Repository}'
+
+    AudienceHero\Bundle\PromoBundle\Action\:
+        public: true
+        resource: '../../Action/*'
+        tags: ['controller.service_arguments']
+
+    AudienceHero\Bundle\PromoBundle\Repository\PromoRepository:
+        public: true
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - 'AudienceHero\Bundle\PromoBundle\Entity\Promo'
+
+    AudienceHero\Bundle\PromoBundle\Repository\PromoRecipientRepository:
+        public: true
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - 'AudienceHero\Bundle\PromoBundle\Entity\PromoRecipient'
+

@@ -1,0 +1,12 @@
+{% extends 'AudienceHeroCoreBundle::base.html.twig' %}
+
+{% trans_default_domain 'ah_mailings' %}
+
+{% block navbar '' %}
+
+{% block container %}
+<div class="jumbotron">
+    <h1>{% trans %}title.unsubscribed_successfully{% endtrans %}</h1>
+    <p>{% trans %}explanation.unsubscribe{% endtrans %}</p>
+</div>
+{% endblock %}

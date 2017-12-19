@@ -1,0 +1,75 @@
+imports:
+    - { resource: config.yml }
+
+audience_hero_core:
+    mailer:
+        adapter: swiftmailer
+
+enqueue:
+    client:
+        traceable_producer: true
+
+framework:
+    ide: 'phpstorm'
+    router:
+        resource: "%kernel.root_dir%/config/routing_dev.yml"
+        strict_requirements: true
+
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
+
+monolog:
+    handlers:
+        main:
+            type:   stream
+            path:   "%kernel.logs_dir%/%kernel.environment%.log"
+            level:  debug
+        console:
+            type:   console
+            bubble: false
+            verbosity_levels:
+                VERBOSITY_VERBOSE: DEBUG
+                VERBOSITY_VERY_VERBOSE: DEBUG
+            channels: ["!doctrine"]
+        console_very_verbose:
+            type:   console
+            bubble: false
+            verbosity_levels:
+                VERBOSITY_VERBOSE: DEBUG
+                VERBOSITY_VERY_VERBOSE: DEBUG
+                VERBOSITY_DEBUG: DEBUG
+            channels: ["doctrine"]
+        # uncomment to get logging in your browser
+        # you may have to allow bigger header sizes in your Web server configuration
+        #firephp:
+        #    type:   firephp
+        #    level:  info
+        #chromephp:
+        #    type:   chromephp
+        #    level:  info
+
+swiftmailer:
+    delivery_address: marc@weistroff.net
+
+doctrine:
+    dbal:
+        dbname:   "%database_name%_dev"
+
+hautelook_alice:
+    fixtures_path: 'Resources/fixtures/orm'
+
+services:
+    twig.text_extension:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - name: twig.extension
+
+bazinga_geocoder:
+    fake_ip: 128.79.246.206
+
+audience_hero_file:
+    filesystem: local
+    base: upload

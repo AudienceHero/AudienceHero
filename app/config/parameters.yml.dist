@@ -1,0 +1,47 @@
+parameters:
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    twitter_key: foobar
+    twitter_secret: foobar
+    facebook_key: foobar
+    facebook_secret: foobar
+
+    redis_dsn: redis://localhost
+
+    rabbitmq_host: localhost
+    rabbitmq_port: 5672
+    rabbitmq_login: mopro
+    rabbitmq_password: guest
+    rabbitmq_vhost: mopro
+
+    aws_id: AKIAJCMIJKOKYASGCSLA
+    aws_secret: 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
+    aws_upload_bucket: mopro-dev-upload
+
+    raven_dsn: 'https://foobar:barfoo@app.getsentry.com/59044'
+
+    google_api_key: AIzaSyDwpAyyhvlOTus09xU3tN7NviHpdXnWoMY
+
+    mailgun_key: "fake"
+    recaptcha_public_key: 6LemGCEUAAAAAPCHSv6vxa0Sx51wK3kSyT9wM1Jx
+    recaptcha_private_key: FOOBAR
+
+    varnish_urls: [http://varnish]
+    cors_allow_origin: http://localhost
+    jwt_private_key_path: '%kernel.root_dir%/../var/jwt/dev_private.pem' # ssh private key path
+    jwt_public_key_path: '%kernel.root_dir%/../var/jwt/dev_public.pem'  # ssh public key path
+    jwt_key_pass_phrase: 'passphrase'                                   # ssh key pass phrase
+    jwt_token_ttl: 86400
+

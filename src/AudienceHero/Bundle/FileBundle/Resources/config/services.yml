@@ -1,0 +1,55 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AudienceHero\Bundle\FileBundle\:
+        resource: '../../*'
+        exclude: '../../{Action,Command,Entity,MimeType,Repository,Tests}'
+
+    AudienceHero\Bundle\FileBundle\Action\:
+        resource: '../../Action/*'
+        public: true
+        tags: ['controller.service_arguments']
+
+    AudienceHero\Bundle\FileBundle\Command\:
+        resource: '../../Command/*'
+        public: true
+        tags: ['console.command']
+
+    AudienceHero\Bundle\FileBundle\Factory\FileFactory:
+        calls:
+            - { method: 'setTokenStorage', arguments: ['@security.token_storage']}
+
+    AudienceHero\Bundle\FileBundle\Repository\FileRepository:
+        factory: ["@doctrine.orm.default_entity_manager", getRepository]
+        arguments:
+            - AudienceHero\Bundle\FileBundle\Entity\File
+
+    AudienceHero\Bundle\FileBundle\EventListener\DoctrineEventListener:
+        autowire: true
+        tags:
+            - { name: 'doctrine.event_listener', event: 'postPersist' }
+            - { name: 'doctrine.event_listener', event: 'postLoad' }
+
+    AudienceHero\Bundle\FileBundle\EventListener\PostFixturesLoadEventSubscriber:
+        arguments:
+            - '%kernel.root_dir%'
+
+    # API
+    audience_hero_file.api.search_filter:
+        autoconfigure: false
+        autowire: false
+        public: false
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments: [{filetype: 'exact'}]
+        tags:      [{ name: 'api_platform.filter', id: 'audience_hero_file.search' }]
+
+    audience_hero_file.api.order_filter:
+        autoconfigure: false
+        autowire: false
+        public: false
+        parent: 'api_platform.doctrine.orm.order_filter'
+        arguments: [{ name: ~ }]
+        tags:      [{ name: 'api_platform.filter', id: 'audience_hero_file.order' }]

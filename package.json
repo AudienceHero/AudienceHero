@@ -1,0 +1,31 @@
+{
+  "name": "AudienceHero",
+  "private": true,
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.16.0",
+    "babel-eslint": "^8.0.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.10.0",
+    "eslint-config-prettier": "^2.7.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "node-sass": "^4.5.3",
+    "prettier": "^1.7.4",
+    "prop-types": "^15.5.10",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "sass-loader": "^6.0.6"
+  },
+  "dependencies": {
+    "babel-preset-react-app": "^3.0.3",
+    "react-tap-event-plugin": "^3.0.2"
+  },
+  "workspaces": [
+    "src/AudienceHero/Bundle/*/Resources/modules/*"
+  ]
+}

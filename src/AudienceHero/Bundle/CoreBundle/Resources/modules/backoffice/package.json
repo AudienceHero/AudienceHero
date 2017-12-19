@@ -1,0 +1,14 @@
+{
+  "name": "@audiencehero-backoffice/core",
+  "version": "1.0.0",
+  "dependencies": {
+    "@audiencehero/common": "^1.0.0",
+    "api-doc-parser": "^0.2.1",
+    "jsonld": "^0.4.12",
+    "lodash.isplainobject": "^4.0.6",
+    "querystrings": "^0.4.0",
+    "react-admin": "^2.0.0-alpha3",
+    "react-flexbox-grid": "^2.0.0",
+    "react-tap-event-plugin": "^3.0.2"
+  }
+}

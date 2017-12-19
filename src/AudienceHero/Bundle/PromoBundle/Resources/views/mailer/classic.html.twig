@@ -1,0 +1,88 @@
+{% extends '@AudienceHeroPromo/mailer/base.html.twig' %}
+
+{% block subject %}{{ promo.mailing.subject }}{% endblock %}
+
+{% block promo_link -%}
+    {%- if promo_recipient.isTest -%}
+        {{ url('promos_preview', {'id': promo.id}) }}
+    {%- else -%}
+        {{ url('promos_listen', {'id': promo.id, 'recipientId': promo_recipient.id}) }}
+    {%- endif -%}
+{%- endblock %}
+
+{% block title %}Listen to '{{ promo.name }}'{% endblock %}
+
+{% block promo_body %}
+    <tr>
+        <td class="content-block">
+            {% if mailing_recipient.salutationName %}
+                Dear {{ mailing_recipient.salutationName }},<br />
+            {% endif %}
+            You have a new promo to review.
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block aligncenter">
+            <h1 class="first"><a href="{{ block('promo_link') }}">{{ promo.name }}</a></h1>
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block aligncenter">
+            <a class="btn-primary" href="{{ block('promo_link') }}">Listen to {{ promo.name }}</a>
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block aligncenter">
+            <a alt="{{ promo.name }}" title="{{ promo.name }}" href="{{ block('promo_link') }}"><img class="img-promo-cover" alt="{{ promo.name }}" width="400" height="400" src="{{ img(promo.artwork.uri, '400x0', {'crop': 'square-center'}) }}" /></a>
+        </td>
+    </tr>
+    <tr>
+        <td class="content-block aligncenter">
+            <p>{{ promo.description|nl2br }}</p>
+        </td>
+    </tr>
+    <tr><td class="content-block aligncenter"><strong>Track list</strong></td></tr>
+    <tr><td class="content-block aligncenter">
+            <ol class="unstyled">
+                {% for track in promo.player.tracks %}
+                    <li>{{ track.title }}</li>
+                {% endfor %}
+            </ol>
+        </td></tr>
+    {% if promo.genre %}
+        <tr><td class="content-block aligncenter"><strong>Genre</strong></td></tr>
+        <tr><td class="content-block aligncenter">{{ promo.genre }}</td></tr>
+    {% endif %}
+    {% if promo.label %}
+        <tr><td class="content-block aligncenter"><strong>Label</strong></td></tr>
+        <tr><td class="content-block aligncenter">{{ promo.label }}</td></tr>
+    {% endif %}
+    {% if promo.releaseDate %}
+        <tr><td class="content-block aligncenter"><strong>Release date</strong></td></tr>
+        <tr><td class="content-block aligncenter">{{ promo.releaseDate }}</td></tr>
+    {% endif %}
+    {% if promo.catalog %}
+        <tr><td class="content-block aligncenter"><strong>Catalog</strong></td></tr>
+        <tr><td class="content-block aligncenter">{{ promo.catalog }}</td></tr>
+    {% endif %}
+    <tr>
+        <td class="content-block aligncenter">
+            <a class="btn-primary" href="{{ block('promo_link') }}">Listen to {{ promo.name }}</a>
+        </td>
+    </tr>
+{% endblock %}
+
+{% block jsonld %}
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "EmailMessage",
+    "action": {
+        "@type": "ViewAction",
+        "url": "{{ block('promo_link') }}",
+        "name": "Listen"
+    },
+    "description": "Listen to {{ promo.name }}"
+}
+</script>
+{% endblock %}

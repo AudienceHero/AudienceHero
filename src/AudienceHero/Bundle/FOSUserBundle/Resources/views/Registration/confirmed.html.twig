@@ -1,0 +1,8 @@
+{% extends "UserBundle::layout.html.twig" %}
+
+{% block page_header_title 'Congrats!' %}
+{% block fos_user_content %}
+<div class="alert alert-success" role="alert">Your account is activated. Welcome!</div>
+<a href="{{ path('homepage') }}" class="btn btn-lg btn-block btn-default">Start using AudienceHero now</a>
+{% endblock fos_user_content %}
+

@@ -1,0 +1,103 @@
+AudienceHero\Bundle\FileBundle\Entity\File:
+    alice_file_jpeg1:
+        owner: '@alice'
+        name: monkey
+        remoteName: monkey.jpg
+        contentType: image/jpeg
+        extension: 'jpg'
+        size: 2146281
+        description: 'Monkey is a Public-Domain image downloaded from https://pixnio.com'
+        publicMetadata:
+            width: 3139
+            height: 2092
+    alice_file_jpeg2:
+        owner: '@alice'
+        name: Manatee
+        remoteName: manatee.jpg
+        contentType: image/jpeg
+        extension: 'jpg'
+        size: 437712
+        description: 'Manatee is a Public-Domain image downloaded from https://pixnio.com'
+        publicMetadata:
+            width: 3000
+            height: 2000
+    alice_file_audio1:
+        owner: '@alice'
+        name: "Drunken Party"
+        remoteName: 'Drunken Party.mp3'
+        contentType: audio/mpeg
+        extension: 'mp3'
+        size: 4852541
+        description: 'Drunken Party is a Public-Domain mp3 downloaded from http://freepd.com/Jazz/'
+    alice_file_audio2:
+        owner: '@alice'
+        name: "Groovin"
+        remoteName: 'Groovin.mp3'
+        contentType: audio/mpeg
+        extension: 'mp3'
+        size: 4803592
+        description: 'Groovin is a Public-Domain mp3 downloaded from http://freepd.com/Jazz/'
+    alice_file_audio3:
+        owner: '@alice'
+        name: "Sloppy Bossa Loop"
+        remoteName: 'Sloppy Bossa Loop.mp3'
+        contentType: audio/mpeg
+        extension: 'mp3'
+        size: 1991492
+        description: 'Sloppy Bossa Loop is a Public-Domain mp3 downloaded from http://freepd.com/Jazz/'
+    alice_file_archive1:
+        owner: '@alice'
+        name: "Archive"
+        contentType: application/zip
+        remoteName: "Archive.zip"
+        extension: 'zip'
+        size: 11181270
+        description: "Archive"
+
+AudienceHero\Bundle\FileBundle\Entity\Player:
+    alice_player:
+        owner: '@alice'
+        reference: 'Jazz Tracks in classic order'
+        title: "Alice's jazz tracks in classic order"
+    alice_player_alternative_order:
+        owner: '@alice'
+        reference: 'Jazz Tracks in alternative order'
+        title: "Alice's jazz tracks in alternative order"
+
+AudienceHero\Bundle\FileBundle\Entity\PlayerTrack:
+    alice_player_track1:
+        owner: '@alice'
+        position: 0
+        player: '@alice_player'
+        title: 'Alice - Drunken Party'
+        file: '@alice_file_audio1'
+    alice_player_track2:
+        owner: '@alice'
+        position: 1
+        player: '@alice_player'
+        title: 'Alice - Groovin'
+        file: '@alice_file_audio2'
+    alice_player_track3:
+        owner: '@alice'
+        position: 2
+        player: '@alice_player'
+        title: 'Alice - Sloppy Bossa Loop'
+        file: '@alice_file_audio3'
+    alice_player_alt_track1:
+        owner: '@alice'
+        position: 0
+        player: '@alice_player_alternative_order'
+        title: 'Alice - Sloppy Bossa Loop'
+        file: '@alice_file_audio3'
+    alice_player_alt_track2:
+        owner: '@alice'
+        position: 1
+        player: '@alice_player_alternative_order'
+        title: 'Alice - Drunken Party'
+        file: '@alice_file_audio1'
+    alice_player_alt_track3:
+        owner: '@alice'
+        position: 2
+        player: '@alice_player_alternative_order'
+        title: 'Alice - Groovin'
+        file: '@alice_file_audio2'

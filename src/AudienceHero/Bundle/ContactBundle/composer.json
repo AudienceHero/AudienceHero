@@ -1,0 +1,16 @@
+{
+    "name": "audiencehero/contact-bundle",
+    "description": "",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "AudienceHero\\Bundle\\ContactBundle\\": ""
+        }
+    },
+    "require": {
+        "endroid/qrcode": "^1.9",
+        "marcw/cccn": "~1.0",
+        "excelwebzone/recaptcha-bundle": "^1.4",
+        "misd/phone-number-bundle": "^1.2"
+    }
+}

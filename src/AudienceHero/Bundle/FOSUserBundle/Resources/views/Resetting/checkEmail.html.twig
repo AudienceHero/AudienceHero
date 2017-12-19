@@ -1,0 +1,9 @@
+{% extends 'UserBundle::layout.html.twig' %}
+
+{% block page_header_title %}Check your email{% endblock %}
+
+{% block fos_user_content %}
+<div class="alert alert-success">
+{{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}
+</div>
+{% endblock fos_user_content %}

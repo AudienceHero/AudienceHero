@@ -1,0 +1,17 @@
+{% block subject %}Activate your AudienceHero account{% endblock %}
+
+{% block body %}
+{% autoescape false %}
+Welcome to AudienceHero.
+
+Your username is {{ user.username }}
+
+-------------------
+Activate your account: {{ confirmationUrl }}
+-------------------
+{% endautoescape  %}
+{% endblock %}
+
+{% block body_html %}
+    {% include 'UserBundle:Registration:email_html.html.twig' %}
+{% endblock %}

@@ -1,0 +1,24 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AudienceHero\Bundle\PodcastBundle\:
+        resource: '../../*'
+        exclude: '../../{Repository,Entity,Event,Tests}'
+
+    AudienceHero\Bundle\PodcastBundle\Action\:
+        public: true
+        resource: '../../Action'
+        tags: ['controller.service_arguments']
+
+    AudienceHero\Bundle\PodcastBundle\Repository\PodcastChannelRepository:
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AudienceHero\Bundle\PodcastBundle\Entity\PodcastChannel
+
+    AudienceHero\Bundle\PodcastBundle\Repository\PodcastEpisodeRepository:
+        factory: ["@doctrine", getRepository]
+        arguments:
+            - AudienceHero\Bundle\PodcastBundle\Entity\PodcastEpisode

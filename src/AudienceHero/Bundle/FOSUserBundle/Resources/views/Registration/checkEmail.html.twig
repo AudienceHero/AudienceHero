@@ -1,0 +1,7 @@
+{% extends "UserBundle::layout.html.twig" %}
+
+{% block page_header_title 'Thanks for signing up!' %}
+{% block fos_user_content %}
+    <div class="alert alert-success" role="alert">Please check your email and click <strong>Activate Account</strong> in the message we just sent to {{ user.email }}.</div>
+{% endblock fos_user_content %}
+

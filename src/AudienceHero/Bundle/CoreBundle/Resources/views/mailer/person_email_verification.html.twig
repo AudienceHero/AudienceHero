@@ -1,0 +1,13 @@
+{% extends '@AudienceHeroCore/mailer/transactional.html.twig' %}
+
+{% block subject %}Please confirm your email address{% endblock %}
+
+{% block preheader %}We need to verify your email address belongs to you.{% endblock %}
+
+{% block content %}
+    <p>This will be quick. Please press the button below in order to confirm your email address.</p>
+{% endblock %}
+
+{% block action_text %}Click to confirm your email address{% endblock %}
+
+{% block action_url %}{{ url('person_emails_verify', {'id': person_email.id, 'confirmationToken': person_email.confirmationToken}) }}{% endblock %}

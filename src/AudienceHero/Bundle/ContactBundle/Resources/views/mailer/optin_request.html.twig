@@ -1,0 +1,13 @@
+{% extends '@AudienceHeroCore/mailer/transactional.html.twig' %}
+
+{% block subject %}Please confirm your subscription{% endblock %}
+
+{% block preheader %}One quick step and it will be all set.{% endblock %}
+
+{% block content %}
+    <p>Please confirm your subscription by clicking on the button.</p>
+{% endblock %}
+
+{% block action_text %}Confirm my subscription{% endblock %}
+
+{% block action_url %}{{ url('contacts_group_forms_optin_confirm', {'id': contactsGroupForm.id, 'cgcId': contactsGroupContact.id}) }}{% endblock %}

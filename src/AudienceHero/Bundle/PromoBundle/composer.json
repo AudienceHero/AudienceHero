@@ -1,0 +1,9 @@
+{
+    "name": "audiencehero/promo-bundle",
+    "autoload": {
+        "psr-4": {
+            "AudienceHero\\Bundle\\PromoBundle\\": ""
+        }
+    },
+    "require": {}
+}

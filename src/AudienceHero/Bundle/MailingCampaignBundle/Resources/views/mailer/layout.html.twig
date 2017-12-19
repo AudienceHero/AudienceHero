@@ -1,0 +1,119 @@
+{% block subject '' %}
+
+{% block body %}
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title 'AudienceHero' %}</title>
+        <style type="text/css">
+            /* reset */
+            body{ margin:0; padding:0; }
+            img{ border:0 none; height:auto; line-height:100%; outline:none; text-decoration:none; }
+            a img{ border:0 none; }
+            .imageFix{ display:block; }
+            table, td{ border-collapse:collapse; }
+            #bodyTable{ height:100% !important; margin:0; padding:0; width:100% !important; }
+            /* our style */
+            body {
+                width: 100% !important;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .ExternalClass {
+                width: 100%;
+            }
+            .ExternalClass {
+                line-height: 100%;
+            }
+            #backgroundTable {
+                margin: 0; padding: 0; width: 600px !important; line-height: 100% !important;
+            }
+            img {
+                outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;
+            }
+            h1 a:active {
+                color: red !important;
+            }
+            h2 a:active {
+                color: red !important;
+            }
+            h3 a:active {
+                color: red !important;
+            }
+            h4 a:active {
+                color: red !important;
+            }
+            h5 a:active {
+                color: red !important;
+            }
+            h6 a:active {
+                color: red !important;
+            }
+            h1 a:visited {
+                color: purple !important;
+            }
+            h2 a:visited {
+                color: purple !important;
+            }
+            h3 a:visited {
+                color: purple !important;
+            }
+            h4 a:visited {
+                color: purple !important;
+            }
+            h5 a:visited {
+                color: purple !important;
+            }
+            h6 a:visited {
+                color: purple !important;
+            }
+
+            #main-content {
+                color: #222222;
+                font-family: 'Helvetica', 'Arial', sans-serif;
+                font-size: 14px;
+                line-height: 1.4;
+                padding: 25px;
+                width: 550px;
+            }
+
+            #main-content a {
+                color: #6DC6DD;
+            }
+
+            #main-content strong {
+                font-weight: bold;
+            }
+
+            #footer {
+                border-top-color: #d0d0d0;
+                border-top-style: solid;
+                border-top-width: 1px;
+                color: #999;
+                font-family: 'Helvetica', 'Arial', sans-serif;
+                font-size: 12px;
+                line-height: 1.4;
+                margin-top: 105px;
+                padding: 25px;
+                width: 550px;
+            }
+
+            #footer a {
+                color: #999;
+            }
+        </style>
+    </head>
+    <body>
+    <div id="main-content">
+        {% block content '' %}
+    </div>
+    <div id="footer">
+        {% block footer_content '' %}
+    </div>
+    </body>
+    </html>
+{% endblock %}

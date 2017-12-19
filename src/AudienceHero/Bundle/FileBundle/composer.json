@@ -1,0 +1,11 @@
+{
+    "name": "audiencehero/file-bundle",
+    "autoload": {
+        "psr-4": {
+            "AudienceHero\\Bundle\\FileBundle\\": ""
+        }
+    },
+    "require": {
+        "aws/aws-sdk-php": "^3.8"
+    }
+}

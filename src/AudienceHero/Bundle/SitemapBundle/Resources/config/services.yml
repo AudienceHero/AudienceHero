@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    AudienceHero\Bundle\SitemapBundle\:
+        resource: '../../'
+        exclude: '../../{Tests}'

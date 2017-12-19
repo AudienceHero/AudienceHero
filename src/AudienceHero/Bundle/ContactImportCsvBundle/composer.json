@@ -1,0 +1,14 @@
+{
+    "name": "audiencehero/contact-import-csv-bundle",
+    "description": "",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "AudienceHero\\Bundle\\ContactImportCsvBundle\\": ""
+        }
+    },
+    "require": {
+        "league/csv": "^9.0",
+        "voku/portable-utf8": "~3.0"
+    }
+}

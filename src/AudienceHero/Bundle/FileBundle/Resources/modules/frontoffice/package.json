@@ -1,0 +1,8 @@
+{
+  "name": "@audiencehero-frontoffice/file",
+  "version": "1.0.0",
+  "dependencies": {
+    "rc-slider": "^8.3.5",
+    "soundmanager2": "^2.97.20170602"
+  }
+}

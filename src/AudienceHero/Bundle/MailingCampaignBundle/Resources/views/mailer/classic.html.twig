@@ -1,0 +1,37 @@
+{% extends 'AudienceHeroMailingCampaignBundle:mailer:layout.html.twig' %}
+
+{% block subject %}{{ mailing.subject }}{% endblock %}
+
+{% block title %}{{ mailing.subject }}{% endblock %}
+
+
+{% block content %}
+    {%- set artwork -%}
+        {%- autoescape false -%}
+            {%- if mailing.artwork -%}
+                <img src="{{ img(mailing.artwork.uri, '500x0', {}) }}" alt="artwork" />
+            {%- endif -%}
+        {%- endautoescape -%}
+    {%- endset -%}
+    {% set template = template_from_string(mailing.body) %}
+    {% set name = mailing_recipient.salutationName %}
+    {%- set output -%}
+        {%- sandbox -%}
+            {% include template ignore missing with {'name': name, 'artwork': artwork} only %}
+        {%- endsandbox -%}
+    {%- endset -%}
+    {{- output|nl2br }}
+    {% if mailing.artwork and not (mailing.body matches '/{{ *artwork *}}/') %}
+        <p>{{ artwork }}</p>
+    {% endif %}
+{% endblock %}
+
+{% block footer_content %}
+    {% if mailing_recipient.isTest %}
+        {% set rid = 'test' %}
+    {% else %}
+        {% set rid = mailing_recipient.id %}
+    {% endif %}
+    <p>Want out of the loop? <a href="{{ url('mailings_optout', {'__dnt': true, 'id': mailing.id, 'recipientId': rid}) }}">Unsubscribe</a>.</p>
+    <p><em>Sent with <a href="https://www.audiencehero.org">AudienceHero</a></em>.</p>
+{% endblock %}

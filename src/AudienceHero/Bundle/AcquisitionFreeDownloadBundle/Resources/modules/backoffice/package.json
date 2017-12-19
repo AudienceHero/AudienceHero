@@ -1,0 +1,8 @@
+{
+  "name": "@audiencehero-backoffice/acquisition-free-download",
+  "version": "1.0.0",
+  "dependencies": {
+    "ra-dependent-input": "https://github.com/marcw/aor-dependent-input#a4fee4cfca4863668a8f0fbcb794ac67937dc96f",
+    "recharts": "^1.0.0-beta.0"
+  }
+}

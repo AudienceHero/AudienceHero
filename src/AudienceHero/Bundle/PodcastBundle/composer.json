@@ -1,0 +1,13 @@
+{
+    "name": "audiencehero/podcast-bundle",
+    "description": "Podcast for AudienceHero",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "AudienceHero\\Bundle\\PodcastBundle\\": ""
+        }
+    },
+    "require": {
+        "marcw/rss-writer": "^0.3"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "audiencehero/activity-bundle",
+    "description": "Activity and aggregate for AudienceHero",
+    "autoload": {
+        "psr-4": {
+            "AudienceHero\\Bundle\\ActivityBundle\\": ""
+        }
+    },
+    "require": {
+        "piwik/device-detector": "^3.8",
+        "snowplow/referer-parser": "^0.2.0",
+        "piwik/referrer-spam-blacklist": "dev-master"
+    }
+}

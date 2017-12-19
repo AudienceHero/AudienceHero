@@ -1,0 +1,40 @@
+{% extends 'UserBundle::layout.html.twig' %}
+
+{% trans_default_domain "FOSUserBundle" %}
+
+{% block page_header_title %}Login{% endblock %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        {% trans %}error.invalid_credentials_or_non_existing_username{% endtrans %}
+    </div>
+{% endif %}
+<form action="{{ path("fos_user_security_check") }}" method="post" role="form">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <div class="form-group">
+        <label for="username">{{ 'security.login.username_or_email'|trans({}, 'FOSUserBundle') }}</label>
+        <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+        <input class="form-control" type="password" id="password" name="_password" required="required" />
+    </div>
+
+    <div class="checkbox">
+        <label for="remember_me">
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+    </label>
+    </div>
+    <button type="submit" class="btn btn-default btn-lg" id="_submit" name="_submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+    <a href="{{ path('fos_user_resetting_request') }}">{% trans %}link.do_you_have_problem_login_in{% endtrans %}</a>
+    {% if featureflag_registration %}
+    <hr />
+        <a href="{{ path('cms_pricing') }}">{% trans %}link.no_account_yet_create_your_account{% endtrans %}</a>
+    {% endif %}
+</form>
+{% endblock fos_user_content %}

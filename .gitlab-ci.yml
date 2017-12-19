@@ -1,0 +1,69 @@
+stages:
+    - test
+    - pages
+    - deploy
+
+cache:
+    paths:
+        - vendor/
+        - node_modules/
+        - var/
+        - web/assets
+
+services:
+    - postgres
+    - rabbitmq
+
+variables:
+    POSTGRES_PASSWORD: ah_test
+    POSTGRES_USER: ah_test
+    POSTGRES_DB: ah_test
+
+    RABBITMQ_DEFAULT_USER: ah_test
+    RABBITMQ_DEFAULT_PASS: ah_test
+    RABBITMQ_DEFAULT_VHOST: ah_test
+    NOCC: "1"
+
+#before_script:
+#    - bash ci/docker_install.sh > /dev/null
+#    - mkdir ~/.ssh
+#    - echo "${SSH_HOST_KEY}" > ~/.ssh/known_hosts
+#    - echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+#    - chmod go-r ~/.ssh/id_rsa
+#    - cp php.docker.ini /usr/local/etc/php/conf.d/99-php.ini
+#    - npm config set cache /cache_npm
+
+.test:php:unit:template: &test_php_units_template
+    stage: test
+    script:
+        - composer install
+        - ./vendor/bin/phpunit
+
+test:php:unit:7.1:
+    <<: *test_php_units_template
+    image: registry.gitlab.com/audiencehero/audiencehero
+
+test:php:e2e:
+    <<: *test_php_units_template
+    image: registry.gitlab.com/audiencehero/audiencehero
+    script:
+        - composer install
+        - php ./bin/console server:start --env=test
+        - php ./vendor/bin/behat
+
+test:php:static:
+    <<: *test_php_units_template
+    image: registry.gitlab.com/audiencehero/audiencehero
+    allow_failure: true
+    script:
+        - composer install
+        - php -D memory_limit=-1 ./vendor/bin/phpstan analyse src
+
+pages:
+    image: apiaryio/sphinx-doc
+    script:
+        - cd docs && make html && cd -
+        - mv docs/_build/html public
+    artifacts:
+        paths:
+            - public

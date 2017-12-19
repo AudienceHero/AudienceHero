@@ -1,0 +1,13 @@
+{
+    "name": "audiencehero/sitemap-bundle",
+    "description": "Sitemap builder for AudienceHero",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "AudienceHero\\Bundle\\SitemapBundle\\": ""
+        }
+    },
+    "require": {
+        "thepixeldeveloper/sitemap": "^4.4"
+    }
+}

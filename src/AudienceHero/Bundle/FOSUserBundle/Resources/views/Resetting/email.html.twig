@@ -1,0 +1,15 @@
+{% block subject %}Reset your AudienceHero account password{% endblock %}
+
+{% block body %}
+{% autoescape false %}
+Hello {{ user.username }}
+
+-------------------
+Reset your password: {{ confirmationUrl }}
+-------------------
+{% endautoescape  %}
+{% endblock %}
+
+{% block body_html %}
+    {% include 'UserBundle:Resetting:email_html.html.twig' %}
+{% endblock %}

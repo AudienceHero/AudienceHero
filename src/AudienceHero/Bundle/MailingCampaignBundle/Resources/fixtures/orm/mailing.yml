@@ -1,0 +1,57 @@
+AudienceHero\Bundle\MailingCampaignBundle\Entity\Email:
+    alice_mailing_sent_emails{1..300}:
+        owner: '@alice'
+        mailingRecipient: '@alice_mailing_sent_recipients_sent<current()>'
+        mandrillId: alice_mailing_sent_emails<current()>
+
+AudienceHero\Bundle\MailingCampaignBundle\Entity\Mailing:
+    alice_mailing_draft:
+        owner: '@alice'
+        isInternal: false
+        personEmail: '@alice_verified_email'
+        fromName: "Alice"
+        reference: "Campaign #2"
+        subject: "This is a draft mailing"
+        contactsGroup: '@alice_contacts_group_fans'
+        body: "I'm only gonna write a little"
+    alice_mailing_sent:
+        owner: '@alice'
+        isInternal: false
+        reference: "Campaign #1"
+        personEmail: '@alice_verified_email'
+        fromName: "Alice"
+        status: 'delivered'
+        subject: "Exclusive news for you!"
+        contactsGroup: '@alice_contacts_group_fans'
+        body: "I SENT THIS !!!"
+        createdAt: '<dateTimeBetween("-2 months", "-2 months")>'
+        updatedAt: '<dateTimeBetween("-2 months", "-2 months")>'
+
+AudienceHero\Bundle\MailingCampaignBundle\Entity\MailingRecipient:
+    alice_mailing_sent_recipients_sent{1..300}:
+        mailing: '@alice_mailing_sent'
+        status: 'sent'
+        contactsGroupContact: '@alice_contacts_group_contact_fans<current()>'
+        createdAt: '<dateTimeBetween("-2 months", "-2 months")>'
+        updatedAt: '<dateTimeBetween("-2 months", "-2 months")>'
+    alice_mailing_sent_recipients_opened{301..400}:
+        mailing: '@alice_mailing_sent'
+        status: 'opened'
+        contactsGroupContact: '@alice_contacts_group_contact_fans<current()>'
+        countMailOpen: <numberBetween(1, 6)>
+        createdAt: '<dateTimeBetween("-2 months", "-2 months")>'
+        updatedAt: '<dateTimeBetween("-2 months", "-1 months")>'
+    alice_mailing_sent_recipients_clicked{401..450}:
+        mailing: '@alice_mailing_sent'
+        status: 'opened'
+        contactsGroupContact: '@alice_contacts_group_contact_fans<current()>'
+        countMailOpen: <numberBetween(1, 6)>
+        countMailClick: <numberBetween(1, 3)>
+        createdAt: '<dateTimeBetween("-2 months", "-2 months")>'
+        updatedAt: '<dateTimeBetween("-2 months", "-1 months")>'
+    alice_mailing_sent_recipients_not_delivered{451..489}:
+        mailing: '@alice_mailing_sent'
+        status: 'not_delivered'
+        contactsGroupContact: '@alice_contacts_group_contact_fans<current()>'
+        createdAt: '<dateTimeBetween("-2 months", "-2 months")>'
+        updatedAt: '<dateTimeBetween("-2 months", "-1 months")>'

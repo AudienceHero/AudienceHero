@@ -1,0 +1,7 @@
+{
+  "name": "@audiencehero-backoffice/promo",
+  "version": "1.0.0",
+  "dependencies": {
+      "@audiencehero-backoffice/mailing-campaign": "^1.0.0"
+  }
+}

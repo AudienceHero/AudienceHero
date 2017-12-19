@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|default('en') }}" prefix="og: http://ogp.me/ns#" {% block htmlattrs '' %}>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="alternate" hreflang="fr" href="{{ url('homepage', {'_locale': 'fr'}) }}" />
+    <link rel="alternate" hreflang="en" href="{{ url('homepage', {'_locale': 'en'}) }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ absolute_url(asset('/assets/img/favicon/apple-touch-icon-57x57.png')) }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ absolute_url(asset('/assets/img/favicon/apple-touch-icon-114x114.png')) }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ absolute_url(asset('/assets/img/favicon/apple-touch-icon-72x72.png')) }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ absolute_url(asset('/assets/img/favicon/apple-touch-icon-144x144.png')) }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{{ absolute_url(asset('/assets/img/favicon/apple-touch-icon-60x60.png')) }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ absolute_url(asset('/assets/img/favicon/apple-touch-icon-120x120.png')) }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ absolute_url(asset('/assets/img/favicon/apple-touch-icon-76x76.png')) }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ absolute_url(asset('/assets/img/favicon/apple-touch-icon-152x152.png')) }}" />
+    <link rel="icon" type="image/png" href="{{ absolute_url(asset('/assets/img/favicon/favicon-196x196.png')) }}" sizes="196x196" />
+    <link rel="icon" type="image/png" href="{{ absolute_url(asset('/assets/img/favicon/favicon-96x96.png')) }}" sizes="96x96" />
+    <link rel="icon" type="image/png" href="{{ absolute_url(asset('/assets/img/favicon/favicon-32x32.png')) }}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{{ absolute_url(asset('/assets/img/favicon/favicon-16x16.png')) }}" sizes="16x16" />
+    <link rel="icon" type="image/png" href="{{ absolute_url(asset('/assets/img/favicon/favicon-128.png')) }}" sizes="128x128" />
+    <meta name="application-name" content="AudienceHero"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="{{ absolute_url(asset('/assets/img/favicon/mstile-144x144.png')) }}" />
+    <meta name="msapplication-square70x70logo" content="{{ absolute_url(asset('/assets/img/favicon/mstile-70x70.png')) }}" />
+    <meta name="msapplication-square150x150logo" content="{{ absolute_url(asset('/assets/img/favicon/mstile-150x150.png')) }}" />
+    <meta name="msapplication-wide310x150logo" content="{{ absolute_url(asset('/assets/img/favicon/mstile-310x150.png')) }}" />
+    <meta name="msapplication-square310x310logo" content="{{ absolute_url(asset('/assets/img/favicon/mstile-310x310.png')) }}" />
+    <meta property="fb:app_id" content="1509275962709323" />
+
+    <title>{% block title %}{% trans %}meta_title.default{% endtrans%}{% endblock %} | AudienceHero</title>
+
+    {% block stylesheets %}
+        <link href="{{ asset('assets/vendor.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/global.css') }}" rel="stylesheet" />
+    {% endblock %}
+    {% if app.environment == 'prod' %}
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            {% if app.user and is_granted('ROLE_USER') %}
+            ga('create', 'UA-62890691-3', 'auto', {'userId': '{{ app.user.getId }}'});
+            {% else %}
+            ga('create', 'UA-62890691-3', 'auto');
+            {% endif %}
+            {% block ga %}
+            ga('send', 'pageview');
+            {% endblock %}
+        </script>
+    {% endif %}
+    {% block head '' %}
+    {% block style '' %}
+</head>
+
+<body class="pushable">
+{% block navbar %}
+    {% include 'AudienceHeroCoreBundle:menu:navbar.html.twig' %}
+{% endblock %}
+<div class="pusher">
+    <div class="full height">
+        <div class="article">
+            {% block container %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="ui black inverted vertical footer segment">
+        <div class="ui center aligned container">
+            {% block footer %}
+                <p class="text-muted"><a href="https://www.audiencehero.org">AudienceHero</a> is proudly built in Lyon.</p>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="{{ asset('/assets/manifest.js') }}"></script>
+<script src="{{ asset('/assets/vendor.js') }}"></script>
+<script src="{{ asset('/assets/app.js') }}"></script>
+{% block javascript %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,221 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: parameters_assets.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+parameters:
+    locale: en
+
+enqueue:
+    transport:
+        default: 'amqp://'
+    client:
+        app_name: 'audience_hero'
+    async_events: false
+    extensions:
+        doctrine_ping_connection_extension: false
+        doctrine_clear_identity_map_extension: true
+        signal_extension: true
+        reply_extension: true
+
+bazinga_geocoder:
+    providers:
+        default:
+            factory: Bazinga\GeocoderBundle\ProviderFactory\GeoIP2Factory
+            options:
+                provider: database
+                database_filename: '%kernel.root_dir%/../vendor/geocoder-php/geoip2-provider/Tests/fixtures/GeoLite2-City.mmdb'
+
+framework:
+    translator:      { fallback: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    validation:      { enable_annotations: true }
+    assets:
+        json_manifest_path: '%kernel.project_dir%/web/assets/manifest.json'
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    session:
+        metadata_update_threshold: 86400
+    serializer:
+        enabled: true
+        enable_annotations: true
+    fragments: { path: /_fragment }
+    http_method_override: true
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug: "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form_themes: ['form_layout.html.twig']
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_pgsql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        server_version: 9.4
+        types:
+            tsvector: Ddmaster\PostgreSearchBundle\Dbal\TsvectorType
+            phone_number: Misd\PhoneNumberBundle\Doctrine\DBAL\Types\PhoneNumberType
+        mapping_types:
+            tsvector: tsvector
+
+    orm:
+        default_repository_class: Happyr\DoctrineSpecification\EntitySpecificationRepository
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        dql:
+            datetime_functions:
+                date:           Oro\ORM\Query\AST\Functions\SimpleFunction
+                time:           Oro\ORM\Query\AST\Functions\SimpleFunction
+                timestamp:      Oro\ORM\Query\AST\Functions\SimpleFunction
+                convert_tz:     Oro\ORM\Query\AST\Functions\DateTime\ConvertTz
+                jsonb_contains: Opsway\Doctrine\ORM\Query\AST\Functions\Contains
+                jsonb_contained: Opsway\Doctrine\ORM\Query\AST\Functions\Contained
+            numeric_functions:
+                timestampdiff:  Oro\ORM\Query\AST\Functions\Numeric\TimestampDiff
+                dayofyear:      Oro\ORM\Query\AST\Functions\SimpleFunction
+                dayofmonth:     Oro\ORM\Query\AST\Functions\SimpleFunction
+                dayofweek:      Oro\ORM\Query\AST\Functions\SimpleFunction
+                week:           Oro\ORM\Query\AST\Functions\SimpleFunction
+                day:            Oro\ORM\Query\AST\Functions\SimpleFunction
+                hour:           Oro\ORM\Query\AST\Functions\SimpleFunction
+                minute:         Oro\ORM\Query\AST\Functions\SimpleFunction
+                month:          Oro\ORM\Query\AST\Functions\SimpleFunction
+                quarter:        Oro\ORM\Query\AST\Functions\SimpleFunction
+                second:         Oro\ORM\Query\AST\Functions\SimpleFunction
+                year:           Oro\ORM\Query\AST\Functions\SimpleFunction
+                sign:           Oro\ORM\Query\AST\Functions\Numeric\Sign
+                pow:            Oro\ORM\Query\AST\Functions\Numeric\Pow
+            string_functions:
+                group_concat:   Oro\ORM\Query\AST\Functions\String\GroupConcat
+                concat_ws:      Oro\ORM\Query\AST\Functions\String\ConcatWs
+                cast:           Oro\ORM\Query\AST\Functions\Cast
+                PLAINTO_TSQUERY: Ddmaster\PostgreSearchBundle\DQL\PlainToTsqueryFunction
+                TSQUERY:        Ddmaster\PostgreSearchBundle\DQL\TsqueryFunction
+                TSRANK:         Ddmaster\PostgreSearchBundle\DQL\TsrankFunction
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default:
+            timestampable: true
+            sluggable: true
+            sortable: true
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AudienceHero\Bundle\CoreBundle\Entity\User
+    use_listener: true
+    use_flash_notifications: true
+    service:
+        mailer: AudienceHero\Bundle\CoreBundle\Bridge\FOS\UserBundle\Mailer\FOSUserMailer
+    from_email:
+        address: contact@audiencehero.org
+        sender_name: AudienceHero
+    registration:
+        confirmation:
+            enabled: true
+            template: UserBundle:Registration:email.html.twig
+    resetting:
+        token_ttl: 86400
+        email:
+            template: UserBundle:Resetting:email.html.twig
+
+audience_hero_core:
+    mailer:
+        adapter: swiftmailer
+        mailgun:
+            api_key: "%mailgun_key%"
+            domain: 'audiencehero.org'
+            is_test_delivery: true
+
+audience_hero_file:
+    filesystem: local
+    base: upload
+
+httplug:
+    plugins:
+        logger: ~
+    clients:
+        default:
+            factory: 'httplug.factory.guzzle6'
+            plugins: ['httplug.plugin.logger']
+        mailgun:
+            factory: 'httplug.factory.guzzle6'
+            plugins: ['httplug.plugin.logger']
+
+doctrine_cache:
+    providers:
+        serializer_metadata:
+            file_system:
+                extension: .cache
+                directory: "%kernel.root_dir%/../var/cache/%kernel.environment%/serializer_metadata"
+        image_server:
+            file_system:
+                extension: .cache
+                directory: "%kernel.root_dir%/../var/cache/%kernel.environment%/image_server"
+        geocoding:
+            file_system:
+                extension: .cache
+                directory: "%kernel.root_dir%/../var/cache/%kernel.environment%/geocoding"
+        device_detector:
+            file_system:
+                extension: .cache
+                directory: ""
+
+ewz_recaptcha:
+    public_key:  "%recaptcha_public_key%"
+    private_key: "%recaptcha_private_key%"
+    locale_from_request: true
+
+nelmio_cors:
+    defaults:
+        allow_origin: ['%cors_allow_origin%']
+        allow_methods: ['POST', 'PUT', 'GET', 'DELETE', 'OPTIONS']
+        allow_headers: ['content-type', 'authorization']
+        expose_headers: ['link']
+        max_age: 84600
+    paths:
+        '^/api': ~
+
+#api_platform:
+#    http_cache:
+#        invalidation:
+#            enabled: true
+#            varnish_urls: '%varnish_urls%'
+#        max_age: 0
+#        shared_max_age: 3600
+#        vary: ['Content-Type', 'Authorization']
+#        public: true
+
+lexik_jwt_authentication:
+    private_key_path: '%jwt_private_key_path%'
+    public_key_path:  '%jwt_public_key_path%'
+    pass_phrase:      '%jwt_key_pass_phrase%'
+    token_ttl:        '%jwt_token_ttl%'
+

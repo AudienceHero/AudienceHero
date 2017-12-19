@@ -1,0 +1,8 @@
+{
+  "name": "@audiencehero-backoffice/contact",
+  "version": "1.0.0",
+  "dependencies": {
+    "copy-to-clipboard": "^3.0.8",
+    "lodash.get": "^4.4.2"
+  }
+}

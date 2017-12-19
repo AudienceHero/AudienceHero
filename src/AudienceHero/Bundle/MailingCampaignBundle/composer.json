@@ -1,0 +1,13 @@
+{
+    "name": "audiencehero/mailing-campaign-bundle",
+    "description": "",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "AudienceHero\\Bundle\\MailingCampaignBundle\\": ""
+        }
+    },
+    "require": {
+        "tijsverkoyen/css-to-inline-styles": "^2.2"
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@audiencehero-frontoffice/core",
+  "version": "1.0.0",
+  "dependencies": {
+    "react-helmet": "^5.2.0"
+  }
+}

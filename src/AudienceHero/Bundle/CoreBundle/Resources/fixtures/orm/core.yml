@@ -1,0 +1,43 @@
+AudienceHero\Bundle\CoreBundle\Entity\User:
+    alice:
+        username: alice
+        email: alice@example.com
+        enabled: true
+        plainPassword: foobar
+    bob:
+        username: bob
+        email: bob@example.com
+        enabled: true
+        plainPassword: foobar
+    jun:
+        username: jun
+        email: jun@example.com
+        enabled: true
+        plainPassword: foobar
+    nemy:
+        username: nemy
+        email: nemy@example.com
+        enabled: true
+        plainPassword: foobar
+
+AudienceHero\Bundle\CoreBundle\Entity\PersonEmail:
+    alice_verified_email:
+        email: alice@verified.com
+        owner: '@alice'
+        isVerified: true
+
+AudienceHero\Bundle\CoreBundle\Entity\Tag:
+    alice_tag_event2017:
+        owner: '@alice'
+        name: 'event 2017'
+        description: 'For people met at an event in 2017'
+    alice_tag_vip:
+        owner: '@alice'
+        name: 'VIP'
+        description: 'For VIP'
+    alice_tag_dummy{1..10}:
+        owner: '@alice'
+        name: '<word()>'
+        description: '<sentence()>'
+        createdAt: '<dateTimeBetween("-3Months", "now")>'
+

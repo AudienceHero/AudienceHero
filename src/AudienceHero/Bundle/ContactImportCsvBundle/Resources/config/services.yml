@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AudienceHero\Bundle\ContactImportCsvBundle\:
+        resource: '../../*'
+        exclude: '../../{Action,Entity,Tests,Repository,Entity}'
+
+    AudienceHero\Bundle\ContactImportCsvBundle\EventListener\TextStoreEventSubscriber:
+        tags: ['doctrine.event_subscriber']

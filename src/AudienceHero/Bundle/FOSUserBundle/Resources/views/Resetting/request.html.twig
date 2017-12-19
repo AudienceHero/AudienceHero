@@ -1,0 +1,18 @@
+{% extends 'UserBundle::layout.html.twig' %}
+
+{% block page_header_title %}Reset your password{% endblock %}
+
+{% block fos_user_content %}
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" role="form">
+    <div class="form-group">
+        {% if invalid_username is defined %}
+            <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</p>
+        {% endif %}
+        <label for="username">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label>
+        <input class="form-control" type="text" id="username" name="username" required="required" />
+    </div>
+    <div>
+        <input type="submit" class="btn btn-default" value="{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+</form>
+{% endblock fos_user_content %}

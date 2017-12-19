@@ -1,0 +1,44 @@
+{% extends '@AudienceHeroPromo/mailer/layout.html.twig' %}
+
+{% block additional_style %}
+    {% if promo.brandingColor %}
+        .alert.alert-branding {
+        background-color: {{ promo.brandingBackgroundColor }};
+        color: {{ promo.brandingColor }};
+        }
+        .btn-primary {
+        background-color: {{ promo.brandingBackgroundColor }};
+        color: {{ promo.brandingColor }};
+        border: solid {{ promo.brandingBackgroundColor }};
+        }
+    {% endif %}
+    .img-promo-cover {
+    max-height: 400px;
+    max-width: 400px;
+    }
+{% endblock %}
+
+{% block content %}
+    {% if promo.brandingColor %}
+        <tr>
+            <td class="alert alert-branding">
+                {% if promo.brandingLogo %}
+                    <img alt="{{ promo.name }}" height="40" src="{{ img(promo.brandingLogo.uri, '0x40', {}) }}" />
+                {% else %}
+                    {{ promo.name }}
+                {% endif %}
+            </td>
+        </tr>
+    {% endif %}
+    {% block promo_body '' %}
+{% endblock %}
+
+{% block footer %}
+    <div class="footer">
+        <table width="100%">
+            <tr>
+                <td class="aligncenter content-block">Send your promos with <a href="{{ url('homepage', {'__dnt': true, 'utm_campaign': 'promo_email_footer', 'utm_medium': 'email', 'utm_content': 'footer_link'}) }}">AudienceHero</a>.</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

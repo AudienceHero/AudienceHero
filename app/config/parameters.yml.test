@@ -1,0 +1,40 @@
+parameters:
+    database_host:     postgres
+    database_port:     ~
+    database_name:     mopro_test
+    database_user:     mopro_test
+    database_password: mopro_test
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    twitter_key: foobar
+    twitter_secret: foobar
+    facebook_key: foobar
+    facebook_secret: foobar
+
+    redis_dsn: redis://redis
+
+    rabbitmq_host: rabbitmq
+    rabbitmq_port: 5672
+    rabbitmq_login: mopro_test
+    rabbitmq_password: mopro_test
+    rabbitmq_vhost: mopro_test
+
+    aws_id: AKIAJCMIJKOKYASGCSLA
+    aws_secret: uNvkU7ZTJ+3AHnhBtc8T+ObG7JsNdu9eRTlGcu/B
+    aws_upload_bucket: mopro-dev-upload
+
+    mailgun_key: "fake"
+
+    google_api_key: AIzaSyDwpAyyhvlOTus09xU3tN7NviHpdXnWoMY
+
+    raven_dsn: 'https://foobar:barfoo@app.getsentry.com/59044'
+
+    recaptcha_public_key: 6LemGCEUAAAAAPCHSv6vxa0Sx51wK3kSyT9wM1Jx
+    recaptcha_private_key: FOOBAR

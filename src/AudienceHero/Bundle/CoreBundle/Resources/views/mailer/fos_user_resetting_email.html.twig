@@ -1,0 +1,13 @@
+{% extends '@AudienceHeroCore/mailer/transactional.html.twig' %}
+
+{% block subject %}Reset your AudienceHero password{% endblock %}
+
+{% block preheader %}Follow these instruction to get a new password.{% endblock %}
+
+{% block content %}
+    <p>In order to reset your account password, please click the button below.</p>
+{% endblock %}
+
+{% block action_text %}Reset your password{% endblock %}
+
+{% block action_url %}{{ url('users_password_reset', {'confirmationToken': owner.confirmationToken}) }}{% endblock %}

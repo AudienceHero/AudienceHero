@@ -1,0 +1,71 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AudienceHero\Bundle\ActivityBundle\:
+        resource: '../../*'
+        exclude: '../../{Action,Repository,Entity,Tests}'
+
+    AudienceHero\Bundle\ActivityBundle\Repository\ActivityRepository:
+        lazy: true
+        factory: ['@doctrine', getRepository]
+        arguments:
+            - 'AudienceHero\Bundle\ActivityBundle\Entity\Activity'
+
+    audiencehero_activity.type_search_filter:
+        public: false
+        autowire: false
+        autoconfigure: false
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            - { type: 'exact' }
+        tags:
+            - { name: 'api_platform.filter', id: 'audiencehero_activity.type_search_filter' }
+
+    audiencehero_actyivity.subject_search_filter:
+        public: false
+        autowire: false
+        autoconfigure: false
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            - { subjectId: 'exact' }
+        tags:
+            - { name: 'api_platform.filter', id: 'audiencehero_activity.subject_search_filter' }
+
+    audiencehero_activity.date_filter:
+        public: false
+        autowire: false
+        autoconfigure: false
+        parent: 'api_platform.doctrine.orm.date_filter'
+        arguments:
+            - { createdAt: ~}
+        tags:
+            - { name: 'api_platform.filter', id: 'audiencehero_activity.date_filter' }
+
+
+    audiencehero_activity.json_filter:
+        public: false
+        autowire: true
+        autoconfigure: false
+        parent: AudienceHero\Bundle\CoreBundle\Bridge\ApiPlatform\Filter\JsonContainsFilter
+        arguments:
+            - '@doctrine'
+            - '@request_stack'
+            - '@?logger'
+            - { subjects: ~ }
+        tags:
+            - { name: 'api_platform.filter', id: 'audiencehero_activity.json_filter' }
+
+    AudienceHero\Bundle\ActivityBundle\EventListener\ActivityEventSubscriber:
+        tags:
+            - { name: 'doctrine.event_subscriber' }
+
+    Snowplow\RefererParser\Parser:
+        arguments:
+            - '@?null'
+            - {}
+
+    DeviceDetector\Yaml\Symfony: ~
+

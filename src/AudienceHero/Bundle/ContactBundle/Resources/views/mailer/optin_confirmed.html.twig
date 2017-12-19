@@ -1,0 +1,11 @@
+{% extends '@AudienceHeroCore/mailer/transactional.html.twig' %}
+
+{% block subject %}Welcome!{% endblock %}
+
+{% block preheader %}Your subscription is confirmed, thanks!{% endblock %}
+
+{% block content %}
+    <p>Thanks for confirming your subscription. See you soon!</p>
+{% endblock %}
+
+{%  block action '' %}

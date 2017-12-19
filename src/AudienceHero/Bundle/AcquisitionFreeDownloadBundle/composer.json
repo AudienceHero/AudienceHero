@@ -1,0 +1,10 @@
+{
+    "name": "audiencehero/acquisition-free-download-bundle",
+    "type": "symfony-bundle",
+    "description": "",
+    "autoload": {
+        "psr-4": {
+            "AudienceHero\\Bundle\\AcquisitionFreeDownloadBundle\\": ""
+        }
+    }
+}

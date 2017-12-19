@@ -1,0 +1,18 @@
+{% extends "UserBundle::layout.html.twig" %}
+
+{% block page_header_title 'Create your account' %}
+{% block fos_user_content %}
+    <p class="text-center">Sign up in 30 seconds. No credit card required.</p>
+    <p class="text-center">AudienceHero is entirely free during beta.</p>
+    <hr />
+    <form action="{{ path('fos_user_registration_register') }}" method="POST" class="fos_user_registration_register" role="form">
+        {{ form_row(form.username) }}
+        <p>Choose wisely</p>
+        {{ form_row(form.email) }}
+        {{ form_row(form.password) }}
+        <div>
+            <button class="btn btn-default" type="submit">Create my account</button>
+        </div>
+    </form>
+{% endblock fos_user_content %}
+

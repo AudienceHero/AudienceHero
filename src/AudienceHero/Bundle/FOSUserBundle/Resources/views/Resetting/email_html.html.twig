@@ -1,0 +1,29 @@
+{% extends 'email/layout.html.twig' %}
+
+{% block title %}Reset your AudienceHero account password{% endblock %}
+
+{% block body %}
+    <tr>
+        <td class="content-block">
+            <h1>Forget your password?</h1>
+            <h2>Don't worry, you're just one click away</h2>
+            <p>Click the button below to reset your AudienceHero account password.</p>
+            <p><a class="btn-primary" href="{{ confirmationUrl }}">Reset your password</a></p>
+        </td>
+    </tr>
+{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "EmailMessage",
+    "action": {
+        "@type": "ViewAction",
+        "url": "{{ confirmationUrl }}",
+        "name": "Reset Password"
+    },
+    "description": "Reset your AudienceHero account password"
+}
+</script>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'email/layout.html.twig' %}
+
+{% block title %}Activate your AudienceHero account{% endblock %}
+
+{% block body %}
+    <tr>
+        <td class="content-block">
+            <h1>Just one more step</h1>
+            <h2>{{ user.username}}</h2>
+            <p>Click the button below to activate your AudienceHero account.</p>
+            <p><a class="btn-primary" href="{{ confirmationUrl }}">Activate Account</a></p>
+        </td>
+    </tr>
+{% endblock %}
+
+{% block jsonld %}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "EmailMessage",
+    "action": {
+        "@type": "ViewAction",
+        "url": "{{ confirmationUrl }}",
+        "name": "Activate account"
+    },
+    "description": "Confirm your AudienceHero account"
+}
+</script>
+{% endblock %}

@@ -1,0 +1,39 @@
+default:
+    autoload:
+        - tests/features/bootstrap
+    calls:
+        error_reporting: 16383 # E_ALL & ~E_USER_DREPRECATED
+    suites:
+        default:
+            paths: [tests/features]
+            contexts:
+                - FeatureContext
+                - Behat\MinkExtension\Context\MinkContext
+                - Behatch\Context\RestContext
+                - Behatch\Context\JsonContext
+                - Behatch\Context\XmlContext
+                - Behatch\Context\TableContext
+                - Devinci\DevinciExtension\Context\JavascriptContext:
+                    maximum_wait: 25
+                - Devinci\DevinciExtension\Context\DebugContext:
+                    asset_dump_path: %paths.base%/build/behat/debug
+    extensions:
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
+        FriendsOfBehat\PerformanceExtension: ~
+        Behat\Symfony2Extension:
+            kernel:
+                env: "test"
+                debug: "true"
+        Behat\MinkExtension:
+            base_url: "http://127.0.0.1:8000/"
+            files_path: tests/features/fixtures
+            browser_name: chrome
+            sessions:
+                default:
+                    chrome:
+                        api_url: http://localhost:9222
+
+        Behatch\Extension: ~
+        jarnaiz\JUnitFormatter\JUnitFormatterExtension:
+            filename: report.xml
+            outputDir: %paths.base%/build/behat/report

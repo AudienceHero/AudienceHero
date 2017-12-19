@@ -1,0 +1,35 @@
+AudienceHero\Bundle\AcquisitionFreeDownloadBundle\Entity\AcquisitionFreeDownload:
+    alice_acquisition_free_download:
+        owner: '@alice'
+        reference: 'First free download to get phone number'
+        privacy: public
+        title: 'My Free Download'
+        description: 'My Free Download is Free.'
+        download: '@alice_file_archive1'
+        fromName: 'Alice'
+        personEmail: '@alice_verified_email'
+        artwork: '@alice_file_jpeg1'
+        contactsGroupForm: '@alice_contacts_group_fans_form'
+        createdAt: '<dateTimeBetween("-5 months", "-5 months")>'
+        updatedAt: '<dateTimeBetween("-5 months", "-5 months")>'
+        player: '@alice_player'
+
+AudienceHero\Bundle\ActivityBundle\Entity\Activity:
+    alice_acquisition_free_download_activity{1..100}:
+        owner: '@alice'
+        type: 'acquisition_free_download.hit'
+        subjects:
+            acquisition_free_downloads: '@alice_acquisition_free_download'
+        ip: <ipv4()>
+        country: <countryCode()>
+        createdAt: '<dateTimeBetween("-5 months", "now")>'
+
+    alice_acquisition_free_download_activity{101..115}:
+        owner: '@alice'
+        type: 'acquisition_free_download.unlock'
+        subjects:
+            acquisition_free_downloads: '@alice_acquisition_free_download'
+            contacts: '@alice_contact<numberBetween(1, 100)>'
+        ip: <ipv4()>
+        country: <countryCode()>
+        createdAt: '<dateTimeBetween("-5 months", "now")>'

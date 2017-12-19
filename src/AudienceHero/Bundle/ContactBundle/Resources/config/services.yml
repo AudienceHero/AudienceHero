@@ -1,0 +1,55 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AudienceHero\Bundle\ContactBundle\:
+        resource: '../../*'
+        exclude: '../../{Action,Entity,Tests,Repository,Entity}'
+
+    AudienceHero\Bundle\ContactBundle\Action\:
+        autoconfigure: true
+        autowire: true
+        public: true
+        resource: '../../Action'
+        tags:
+            - {name: 'controller.service_arguments'}
+
+    AudienceHero\Bundle\ContactBundle\EventListener\FormGeocoderEventSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
+    AudienceHero\Bundle\ContactBundle\Repository\ContactRepository:
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - 'AudienceHero\Bundle\ContactBundle\Entity\Contact'
+
+    AudienceHero\Bundle\ContactBundle\Repository\ContactsGroupRepository:
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - 'AudienceHero\Bundle\ContactBundle\Entity\ContactsGroup'
+
+    AudienceHero\Bundle\ContactBundle\Repository\ContactsGroupContactRepository:
+        factory: ['@doctrine', 'getRepository']
+        arguments:
+            - 'AudienceHero\Bundle\ContactBundle\Entity\ContactsGroupContact'
+
+    audiencehero_contact.api.search_filter:
+        autowire: false
+        autoconfigure: false
+        public: false
+        parent: 'api_platform.doctrine.orm.search_filter'
+        arguments:
+            - { country: exact, tags.tag.name: exact, groups.group.name: exact }
+        tags:
+            - { name: 'api_platform.filter', id: 'audiencehero_contact.filter.search' }
+
+    audiencehero_contact.api.order_filter:
+        autowire: false
+        autoconfigure: false
+        public: false
+        parent: 'api_platform.doctrine.orm.order_filter'
+        arguments: [{name: ~, email: ~, city: ~, country: ~, groups.group.name: ~ }]
+        tags:
+            - { name: 'api_platform.filter', id: 'audiencehero_contact.filter.order' }

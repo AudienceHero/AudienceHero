@@ -1,0 +1,77 @@
+{% block subject '' %}
+
+{% block body %}
+    <!doctype html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>AudienceHero</title>
+        <style>
+            {% block styles %}
+            {% include 'AudienceHeroCoreBundle:mailer:transactional_styles.html.twig' %}
+            {% endblock %}
+        </style>
+    </head>
+    <body class="">
+    <table border="0" cellpadding="0" cellspacing="0" class="body">
+        <tr>
+            <td>&nbsp;</td>
+            <td class="container">
+                <div class="content">
+                    <span class="preheader">{% block preheader ''%}</span>
+                    <table class="main">
+                        <tr>
+                            <td class="wrapper">
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>
+                                            <p>{% block salutation %}Hey {{ owner.username }}{% endblock %}</p>
+                                            {% block content '' %}
+
+                                            {% block action %}
+                                                <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td align="left">
+                                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td> <a href="{% block action_url '' %}" target="_blank">{% block action_text '' %}</a> </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            {% endblock %}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="footer">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="content-block powered-by">
+                                    {% block signature %}
+                                        Sent with <a href="https://www.audiencehero.org">AudienceHero</a>.
+                                    {% endblock %}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- END FOOTER -->
+
+                    <!-- END CENTERED WHITE CONTAINER -->
+                </div>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    </body>
+    </html>
+{% endblock %}

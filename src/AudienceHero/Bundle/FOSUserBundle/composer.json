@@ -1,0 +1,13 @@
+{
+    "name": "audiencehero/fos-user",
+    "description": "",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "AudienceHero\\Bundle\\FOSUserBundle\\": ""
+        }
+    },
+    "require": {
+        "friendsofsymfony/user-bundle": "^2.0"
+    }
+}

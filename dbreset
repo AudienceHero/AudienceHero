@@ -1,0 +1,17 @@
+#!/bin/bash
+sfenv=$1
+if [ -z $sfenv ]
+then
+    sfenv="dev"
+fi
+
+./bin/console doctrine:database:drop --ansi --if-exists --force --env=${sfenv}
+./bin/console doctrine:database:create --ansi --env=${sfenv}
+#./bin/console doctrine:migrations:status --ansi --env=${sfenv}
+#./bin/console doctrine:migrations:migrate --ansi --no-interaction --env=${sfenv}
+if [ -z "$2" ];
+then
+    ./bin/console hautelook_alice:doctrine:fixtures:load --ansi --env=${sfenv} --no-interaction --purge-with-truncate
+    ./bin/console app:activity:enrich --ansi --env=${sfenv}
+    ./bin/console app:metrics:aggregate --ansi --env=${sfenv} --sync --all-time
+fi
