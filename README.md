@@ -1,5 +1,7 @@
 # AudienceHero
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AudienceHero/AudienceHero/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AudienceHero/AudienceHero/?branch=master)
+
 AudienceHero is a modular, API-Centric, and multi-tenant community Management System for the independent creators. 
 It aims to be the all-in-one toolkit for anybody needing to sustainably grow an audience. 
 
