@@ -1,5 +1,6 @@
 # AudienceHero
 
+[![GitHub license](https://img.shields.io/github/license/audiencehero/audiencehero.svg)](https://github.com/AudienceHero/AudienceHero/blob/master/LICENSE)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AudienceHero/AudienceHero/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AudienceHero/AudienceHero/?branch=master)
 
 AudienceHero is a modular, API-Centric, and multi-tenant community Management System for the independent creators. 
