@@ -28,7 +28,7 @@ trait TimestampableEntity
      * @var \DateTime
      * @Gedmo\Timestampable(on="create")
      * @Groups({"private_read"})
-     * @ORM\Column(type="utc_datetime")
+     * @ORM\Column(type="datetime")
      */
     protected $createdAt;
 
@@ -36,7 +36,7 @@ trait TimestampableEntity
      * @var \DateTime
      * @Gedmo\Timestampable(on="update")
      * @Groups({"private_read"})
-     * @ORM\Column(type="utc_datetime")
+     * @ORM\Column(type="datetime")
      */
     protected $updatedAt;
 

@@ -2,18 +2,17 @@ Timestampable
 =============
 
 Timestampable is one of the core behaviors of AudienceHero. It is used to track creation and update time of a resource.
-It also provides a `Doctrine Type <http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html>`_
-that converts all stored date and time in the UTC timezone.
+It also overrides the ``datetime`` `Doctrine Type <http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/types.html>`_
+and converts all stored date and time in the UTC timezone.
 
 .. tip::
 
     **Best pratice**: It is recommended to use AudienceHero's ``TimestampableEntity`` trait. It you have to deal with date and time,
-    it is also recommended to use the provided Doctrine Type.
 
 Store date and time in the UTC time zone
 ----------------------------------------
 
-Timestampable provides a Doctrine Type to use. This type converts all date to UTC before storing it to the database. It also
+Timestampable override the ``datetime`` Doctrine Type. This type converts all date to UTC before storing it to the database. It also
 converts all UTC date to the current server timezone when fetching dates from the database. It ensures that date and times will
 always be consistent, no matter the current Daylight Saving Time or the current Timezone.
 
@@ -28,7 +27,7 @@ always be consistent, no matter the current Daylight Saving Time or the current 
     class Page
     {
         /**
-         * @ORM\Column(type="utc_datetime", nullable=true)
+         * @ORM\Column(type="datetime", nullable=true)
          */
         private $lockedAt;
 

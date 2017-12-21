@@ -31,7 +31,7 @@ trait PublishableEntity
 
     /**
      * @var null|\DateTime
-     * @ORM\Column(type="utc_datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      * @Assert\GreaterThan("now")
      * @Groups({"read", "write"})
      */

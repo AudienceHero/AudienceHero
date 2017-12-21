@@ -34,9 +34,8 @@ class AudienceHeroCoreBundle extends Bundle implements ModuleProviderInterface
         if (!Type::hasType('jsonb_iri_associations')) {
             Type::addType('jsonb_iri_associations', JsonbIriAssociations::class);
         }
-        if (!Type::hasType('utc_datetime')) {
-            Type::addType('utc_datetime', UTCDateTimeType::class);
-        }
+
+        Type::overrideType('datetime', UTCDateTimeType::class);
     }
 
     public function boot()

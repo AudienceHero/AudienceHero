@@ -125,7 +125,7 @@ class Mailing extends Campaign implements \AudienceHero\Bundle\CoreBundle\Behavi
 
     /**
      * @var null|\DateTime
-     * @ORM\Column(type="utc_datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      * @Gedmo\Timestampable(on="change", field="status", value="delivered")
      * @Groups({"read"})
      */

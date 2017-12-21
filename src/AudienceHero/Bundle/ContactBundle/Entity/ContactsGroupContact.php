@@ -79,21 +79,21 @@ class ContactsGroupContact implements \AudienceHero\Bundle\CoreBundle\Behavior\O
 
     /**
      * @var null|\DateTime
-     * @ORM\Column(type="utc_datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"read", "contact.read"})
      */
     private $optinAt;
 
     /**
      * @var \DateTime|null
-     * @ORM\Column(type="utc_datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"read", "contact.read"})
      */
     private $unsubscribedAt;
 
     /**
      * @var \DateTime|null
-     * @ORM\Column(type="utc_datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"read", "contact.read"})
      */
     private $cleanedAt;

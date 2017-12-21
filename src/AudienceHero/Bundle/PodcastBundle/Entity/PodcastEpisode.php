@@ -149,7 +149,7 @@ class PodcastEpisode implements OwnableInterface, PublishableInterface, Linkable
 
     /**
      * @var null|\DateTime
-     * @ORM\Column(type="utc_datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      * @Groups({"read", "write"})
      */
     private $publishedAt;
