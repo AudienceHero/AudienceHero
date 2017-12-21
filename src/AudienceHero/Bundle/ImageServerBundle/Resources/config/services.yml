@@ -1,0 +1,18 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AudienceHero\Bundle\ImageServerBundle\:
+        resource: '../../*'
+        exclude: '../../{Action,Tests}'
+
+    AudienceHero\Bundle\ImageServerBundle\Action\:
+        autoconfigure: true
+        autowire: true
+        public: true
+        resource: '../../Action'
+        tags:
+            - {name: 'controller.service_arguments'}
+
