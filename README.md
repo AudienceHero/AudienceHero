@@ -28,11 +28,23 @@ Documentation is available in the `docs` directory, and on the official website:
 ## Contributing
 
 Contributions are welcome. There is plenty of ways to make this project better, and code is only a small part of then.
-You can help by writing documentation, fixing typos, tweaking the design, tweaking the UX, contribute to the core,
-write new extensions, sponsor the development, etc... Be sure to communicate with the community before starting working 
-on something that would take you many hours.
+You can contribute by:
 
-The project is subject to a [code of conduct](/conduct.md).
+- writing documentation
+- fixing typos
+- tweaking the design
+- tweaking the UX
+- contributing to the core
+- writing extensions
+- sponsoring the development
+
+Before engaging in a large contribution, be sure to communicate with the project team before.
+
+The project is subject to a [Contributor Code Of Conduct](/conduct.md).
+
+## About
+
+AudienceHero has been created by [Marc Weistroff](https://marc.weistroff.net).
 
 ## Licensing
 
