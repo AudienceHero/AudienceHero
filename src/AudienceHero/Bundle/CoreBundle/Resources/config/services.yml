@@ -17,7 +17,7 @@ services:
         tags:
             - { name: doctrine.event_subscriber, connection: default }
 
-    AudienceHero\Bundle\CoreBundle\EventListener\LinkableEntityEventSubscriber:
+    AudienceHero\Bundle\CoreBundle\Behavior\Linkable\EventListener\LinkableEntityEventSubscriber:
         tags:
             - { name: doctrine.event_subscriber, connection: default }
 
