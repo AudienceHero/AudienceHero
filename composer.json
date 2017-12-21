@@ -2,7 +2,7 @@
     "name": "audiencehero/audiencehero",
     "license": "AGPL",
     "type": "project",
-    "description": "Foo",
+    "description": "API centric, multi-tenant, and modular Community Management System",
     "autoload": {
         "psr-4": {
             "AppBundle\\": "src/AppBundle"
