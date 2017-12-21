@@ -63,9 +63,6 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         },
-        "branch-alias": {
-            "dev-master": "3.0-dev"
-        },
         "merge-plugin": {
             "include": [
                 "src/AudienceHero/Bundle/*/composer.json"
