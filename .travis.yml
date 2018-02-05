@@ -10,7 +10,7 @@ addons:
 before_install:
   - sudo apt-get update -q
   - sudo apt-get install python-pip
-  - pip install sphinx
+  - sudo pip install sphinx
 
 jobs:
   include:
