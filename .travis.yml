@@ -5,7 +5,12 @@ php:
 addons:
   apt:
     packages:
-      - python-sphinx
+      - python-pip
+
+before_install:
+  - sudo apt-get update -q
+  - sudo apt-get install python-pip
+  - pip install sphinx
 
 jobs:
   include:
