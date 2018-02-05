@@ -23,4 +23,4 @@ jobs:
         secret_access_key: "$S3_DOCUMENTATION_KEY"
         bucket: "www.audiencehero.org"
         skip_cleanup: true
-        local_dir: docs/_build/html
+        local_dir: _build/html
