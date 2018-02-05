@@ -1,0 +1,21 @@
+language: php
+php:
+  - '7.0'
+  - '7.1'
+  - '7.2'
+
+addons:
+  apt:
+    packages:
+      - python-sphinx
+
+jobs:
+  include:
+    - script: "echo Unit Tests"
+    - stage: "deploy"
+      script: 'cd docs && make html'
+      deploy:
+        provider: s3
+        access_key_id: "$S3_DOCUMENTATION_ID"
+        secret_access_key: "$S3_DOCUMENTATION_KEY"
+        bucket: 'www.audiencehero.org'
