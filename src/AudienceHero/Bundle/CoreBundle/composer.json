@@ -1,7 +1,7 @@
 {
   "name": "audiencehero/core-bundle",
   "license": "AGPL",
-  "description": "AudienceHero is an API centric Community Management System.",
+  "description": "AudienceHero is an API centric Audience Management System.",
   "type": "symfony-bundle",
   "autoload": {
     "psr-4": {
@@ -27,7 +27,6 @@
     "friendsofsymfony/user-bundle": "^2.0",
     "geocoder-php/chain-provider": "^4.0",
     "geocoder-php/geoip2-provider": "^4.0",
-    "audience-hero/image-server-bundle": "^2.0.0",
     "oro/doctrine-extensions": "^1.0",
     "geoip2/geoip2": "^2.4",
     "happyr/doctrine-specification": "^0.7.2",
