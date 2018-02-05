@@ -1,8 +1,8 @@
 {
     "name": "audiencehero/audiencehero",
-    "license": "AGPL",
+    "license": "AGPL-3.0-only",
     "type": "project",
-    "description": "API centric, multi-tenant, and modular Community Management System",
+    "description": "API centric, multi-tenant, and modular Audience Management System",
     "autoload": {
         "psr-4": {
             "AppBundle\\": "src/AppBundle"
