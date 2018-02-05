@@ -16,7 +16,7 @@ as a way to discrimante between them, like this:
 This way, she can quickly identify them.
 
 How to use the Referenceable behavior?
---------------------------------
+--------------------------------------
 
 The Referenceable behavior is used by describing that your class uses the ``ReferenceableInterface`` interface and uses the
 ``ReferenceableEntity`` trait.

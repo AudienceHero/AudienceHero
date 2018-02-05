@@ -3,10 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-AudienceHero
-============
+.. image:: _static/AH-open-source-logo.svg
 
-AudienceHero is a modular API-Centric Community Management System designed for the independent creators.
+What is AudienceHero?
+=====================
+
+AudienceHero is a modular API-Centric Audience Management System.
 AudienceHero is a free (as in speech, and as in beer) software licensed under the Affero General Public License.
 
 Wait! What?

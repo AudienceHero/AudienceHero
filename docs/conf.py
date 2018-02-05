@@ -85,6 +85,7 @@ todo_include_todos = False
 html_theme = 'audiencehero_theme'
 html_theme_path = ["_themes"]
 html_show_sphinx = False
+html_logo="logo/AH-open-source-logo.svg"
 
 
 # Theme options are theme-specific and customize the look and feel of a theme
