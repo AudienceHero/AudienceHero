@@ -25,3 +25,4 @@ jobs:
         skip_cleanup: true
         region: "eu-west-1"
         local_dir: _build/html
+        acl: public_read
