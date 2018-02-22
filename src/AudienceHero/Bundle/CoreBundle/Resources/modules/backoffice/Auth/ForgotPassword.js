@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { Card, CardActions } from 'material-ui/Card';
 import Avatar from 'material-ui/Avatar';
 import {CircularProgress} from 'material-ui/Progress';
@@ -31,8 +30,7 @@ class ForgotPassword extends Component {
             theme,
             translate,
         } = this.props;
-        const muiTheme = getMuiTheme(theme);
-        const { primary1Color, accent1Color } = getColorsFromTheme(muiTheme);
+        const { primary1Color, accent1Color } = getColorsFromTheme();
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div style={{ ...styles.main, backgroundColor: primary1Color }}>

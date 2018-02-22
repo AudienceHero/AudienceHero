@@ -5,8 +5,8 @@ import {Select} from 'material-ui';
 import compose from 'recompose/compose';
 import { fetchCountryList as fetchCountryListAction } from '../actions';
 import { connect } from 'react-redux';
-import { addField, Field } from 'redux-form';
-import { translate, FieldTitle } from 'react-admin';
+import { Field } from 'redux-form';
+import { addField, translate, FieldTitle } from 'react-admin';
 
 export class CountryInput extends Component {
     /*

@@ -10,7 +10,6 @@ import {
 } from 'react-admin';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
-import ChipInput from 'material-ui-chip-input';
 import { change as changeAction } from 'redux-form';
 import get from 'lodash.get';
 
@@ -152,6 +151,8 @@ export class TagsInput extends React.Component {
         // {...input}
         console.log('values', this.state.values);
         return (
+            <div></div>
+            /**
             <ChipInput
                 value={this.state.values}
                 onBlur={this.handleBlur}
@@ -173,6 +174,7 @@ export class TagsInput extends React.Component {
                 dataSourceConfig={{ text: 'text', value: 'value' }}
                 openOnFocus
             />
+            */
         );
     }
 }

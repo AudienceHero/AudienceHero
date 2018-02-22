@@ -24,14 +24,9 @@ import {
 import { importCsvContacts as importCsvContactsAction } from './actions';
 import get from 'lodash.get';
 import { Field, reduxForm } from 'redux-form';
-import muiThemeable from 'material-ui/styles/muiThemeable';
 
 const renderSelect = (muiTheme, choices, translate) => props => {
     const { input, meta: { touched, error } } = props;
-
-    const errorColor =
-        input.value == '' ? muiTheme.palette.primary1Color : muiTheme.textField.errorColor;
-    const errorStyle = { whiteSpace: 'normal', color: errorColor };
 
     return (
         <SelectField
@@ -42,7 +37,6 @@ const renderSelect = (muiTheme, choices, translate) => props => {
             style={{ maxWidth: '100%' }}
             floatingLabelText={translate('ah.csv_import.input.select_column')}
             errorText={error && translate(error)}
-            errorStyle={errorStyle}
         >
             {choices.map(item => (
                 <MenuItem
@@ -220,7 +214,6 @@ const Form = compose(
             return errors;
         },
     }),
-    muiThemeable()
 )(BaseForm);
 
 export class CsvContactImport extends React.Component {
@@ -286,7 +279,7 @@ const enhance = compose(
     connect(mapStateToProps, {
         crudGetOne: crudGetOneAction,
         importCsvContacts: importCsvContactsAction,
-    })
+    }),
 );
 
 const EnhancedCsvContactImport = enhance(CsvContactImport);

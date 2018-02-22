@@ -8,10 +8,8 @@ import {
     FieldTitle,
     addField,
 } from 'react-admin';
-// import { getPossibleReferences } from '../../reducer/admin/references/possibleValues';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
-import ChipInput from 'material-ui-chip-input';
 import { change as changeAction } from 'redux-form';
 import get from 'lodash.get';
 
@@ -166,6 +164,8 @@ export class ReferenceObjectArrayInput extends React.Component {
         const { touched, error } = meta;
 
         return (
+            <div></div>
+            /**
             <ChipInput
                 value={this.state.values}
                 onBlur={this.handleBlur}
@@ -186,6 +186,7 @@ export class ReferenceObjectArrayInput extends React.Component {
                 dataSourceConfig={{ text: 'text', value: 'value' }}
                 openOnFocus
             />
+            **/
         );
     }
 }

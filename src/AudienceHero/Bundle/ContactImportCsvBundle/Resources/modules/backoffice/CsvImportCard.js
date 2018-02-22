@@ -1,6 +1,6 @@
 import React from 'react';
 import compose from 'recompose/compose';
-import { Card, CardText, CardTitle, Button } from 'material-ui';
+import { Card, CardContent, CardTitle, Button } from 'material-ui';
 import {
     FormField,
     translate,
@@ -109,7 +109,7 @@ export class CsvImportCard extends React.Component {
                     title={translate('ah.csv_import.card.title')}
                     subtitle={translate('ah.csv_import.card.subtitle')}
                 />
-                <CardText expandable={true}>
+                <CardContent expandable={true}>
                     <CsvImportForm>
                         <FileInput
                             onChange={this.onFileChange}
@@ -141,7 +141,7 @@ export class CsvImportCard extends React.Component {
                             icon={<ImportIcon />}
                         />
                     </CsvImportForm>
-                </CardText>
+                </CardContent>
             </Card>
         );
     }

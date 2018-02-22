@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { propTypes, reduxForm, Field } from 'redux-form';
 import { Card } from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import cyan from 'material-ui/colors/cyan';
 import pink from 'material-ui/colors/pink';
 const cyan500 = cyan['500'];
@@ -34,8 +33,7 @@ class Login extends React.Component {
 
     render() {
         const { handleSubmit, submitting, theme, translate } = this.props;
-        const muiTheme = getMuiTheme(theme);
-        const { primary1Color, accent1Color } = getColorsFromTheme(muiTheme);
+        const { primary1Color, accent1Color } = getColorsFromTheme();
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div style={{ ...styles.main, backgroundColor: primary1Color }}>
