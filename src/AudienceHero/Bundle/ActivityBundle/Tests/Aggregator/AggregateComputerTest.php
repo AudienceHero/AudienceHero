@@ -16,9 +16,6 @@ use AudienceHero\Bundle\ActivityBundle\Aggregator\AggregateComputer;
 use AudienceHero\Bundle\ActivityBundle\Entity\Activity;
 use AudienceHero\Bundle\ActivityBundle\Repository\ActivityRepository;
 use AudienceHero\Bundle\CoreBundle\Behavior\Identifiable\Finder\IdentifiableFinder;
-use AudienceHero\Bundle\CoreBundle\Behavior\Referenceable\ReferenceableInterface;
-use AudienceHero\Bundle\CoreBundle\Entity\User;
-use Payum\Core\Registry\RegistryInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
 
