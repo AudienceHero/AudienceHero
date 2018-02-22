@@ -5,7 +5,7 @@ import {Select} from 'material-ui';
 import compose from 'recompose/compose';
 import { fetchCountryList as fetchCountryListAction } from '../actions';
 import { connect } from 'react-redux';
-import { Field } from 'redux-form';
+import { addField, Field } from 'redux-form';
 import { translate, FieldTitle } from 'react-admin';
 
 export class CountryInput extends Component {
@@ -98,6 +98,7 @@ CountryInput.propTypes = {
 
 const enhance = compose(
     translate,
+    addField,
     connect(
         ({ locale, ah_core }) => ({
             locale,
@@ -112,7 +113,6 @@ const enhance = compose(
 const EnhancedCountryInput = enhance(CountryInput);
 
 EnhancedCountryInput.defaultProps = {
-    addField: true,
     allowEmpty: false,
     options: {},
     locale: 'en',

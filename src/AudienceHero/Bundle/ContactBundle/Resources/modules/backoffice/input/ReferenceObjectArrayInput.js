@@ -6,6 +6,7 @@ import {
     crudGetMatching as crudGetMatchingAction,
     SelectArrayInput,
     FieldTitle,
+    addField,
 } from 'react-admin';
 // import { getPossibleReferences } from '../../reducer/admin/references/possibleValues';
 import { connect } from 'react-redux';
@@ -213,6 +214,7 @@ const mapStateToProps = (state, props) => {
 
 const enhance = compose(
     translate,
+    addField,
     connect(mapStateToProps, {
         crudGetMany: crudGetManyAction,
         crudGetMatching: crudGetMatchingAction,
@@ -223,7 +225,6 @@ const enhance = compose(
 const EnhancedReferenceObjectArrayInput = enhance(ReferenceObjectArrayInput);
 
 EnhancedReferenceObjectArrayInput.defaultProps = {
-    addField: true,
     optionValue: 'id',
     normalizedKey: '@id',
     optionText: 'name',

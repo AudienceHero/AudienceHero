@@ -2,7 +2,7 @@
   "name": "AudienceHero",
   "private": true,
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.16.0",
+    "@symfony/webpack-encore": "^0.19.0",
     "babel-eslint": "^8.0.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.10.0",

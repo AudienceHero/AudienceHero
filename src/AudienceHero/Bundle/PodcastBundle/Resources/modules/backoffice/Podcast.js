@@ -20,6 +20,7 @@ import {
     EmailField,
     DateField,
     ShowButton,
+    DateInput as DateTimeInput
 } from 'react-admin';
 import {
     PrivacyField,
@@ -29,7 +30,6 @@ import {
 import { DialogInput } from '@audiencehero-backoffice/file';
 import ITunesCategoryInput from './input/ITunesCategoryInput';
 import { DependentInput } from 'ra-dependent-input';
-import DateTimeInput from 'aor-datetime-input';
 
 export const PodcastChannelList = props => (
     <List {...props}>

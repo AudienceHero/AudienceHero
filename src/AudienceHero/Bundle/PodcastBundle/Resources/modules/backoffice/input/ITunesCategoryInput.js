@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Select} from 'material-ui';
-import { translate, FieldTitle } from 'react-admin';
+import { addField, translate, FieldTitle } from 'react-admin';
 
 const iTunesCategories = {
     Arts: [
@@ -172,10 +172,9 @@ ITunesCategoryInput.propTypes = {
 };
 
 ITunesCategoryInput.defaultProps = {
-    addField: true,
     allowEmpty: false,
     options: {},
     choices: iTunesCategories,
 };
 
-export default translate(ITunesCategoryInput);
+export default translate(addField(ITunesCategoryInput));

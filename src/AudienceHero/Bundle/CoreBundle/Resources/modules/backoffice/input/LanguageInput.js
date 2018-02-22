@@ -6,7 +6,7 @@ import compose from 'recompose/compose';
 import { fetchLanguageList as fetchLanguageListAction } from '../actions';
 import { connect } from 'react-redux';
 import { Field } from 'redux-form';
-import { translate, FieldTitle } from 'react-admin';
+import { addField, translate, FieldTitle } from 'react-admin';
 
 export class LanguageInput extends Component {
     /*
@@ -98,6 +98,7 @@ LanguageInput.propTypes = {
 
 const enhance = compose(
     translate,
+    addField,
     connect(
         ({ locale, ah_core }) => ({
             locale,
@@ -112,7 +113,6 @@ const enhance = compose(
 const EnhancedLanguageInput = enhance(LanguageInput);
 
 EnhancedLanguageInput.defaultProps = {
-    addField: true,
     allowEmpty: false,
     options: {},
     locale: 'en',

@@ -16,8 +16,8 @@ import {
     FormTab,
     Edit,
     TextInput,
+    DateInput as DateTimeInput
 } from 'react-admin';
-import { DateTimeInput } from 'aor-datetime-input';
 import CardShare from './CardShare';
 import { crudGetList as crudGetListAction, translate } from 'react-admin';
 import { connect } from 'react-redux';

@@ -15,9 +15,9 @@ import {
     FormTab,
     Edit,
     TextInput,
+    DateInput as DateTimeInput
 } from 'react-admin';
 import { DependentInput } from 'ra-dependent-input';
-import { DateTimeInput } from 'aor-datetime-input';
 import {
     PrivacyField,
     PrivacyInputChoices,

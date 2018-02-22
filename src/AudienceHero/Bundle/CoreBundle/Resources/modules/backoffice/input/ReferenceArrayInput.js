@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import {
+    addField,
     Labeled,
     crudGetMany as crudGetManyAction,
     crudGetMatching as crudGetMatchingAction,
@@ -266,8 +267,4 @@ const ConnectedReferenceInput = connect(mapStateToProps, {
     crudGetMatching: crudGetMatchingAction,
 })(ReferenceArrayInput);
 
-ConnectedReferenceInput.defaultProps = {
-    addField: true,
-};
-
-export default ConnectedReferenceInput;
+export default addField(ConnectedReferenceInput);

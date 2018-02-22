@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+    addField,
     translate,
     crudGetMany as crudGetManyAction,
     crudGetMatching as crudGetMatchingAction,
@@ -201,6 +202,7 @@ const mapStateToProps = (state, props) => {
 
 const enhance = compose(
     translate,
+    addField,
     connect(mapStateToProps, {
         crudGetMany: crudGetManyAction,
         crudGetMatching: crudGetMatchingAction,
@@ -211,7 +213,6 @@ const enhance = compose(
 const EnhancedTagsInput = enhance(TagsInput);
 
 EnhancedTagsInput.defaultProps = {
-    addField: true,
     source: 'tags',
 };
 

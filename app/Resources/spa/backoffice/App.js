@@ -62,6 +62,7 @@ const history = createBrowserHistory({
 const theme = getMuiTheme();
 
 export const messages = merge({ en: englishMessages }, ...bundleMessages);
+export const i18nprovider = lang => messages[lang];
 
 const menuItemLinkRenderer = ({
     leftIcon,
@@ -157,7 +158,7 @@ class App extends Component {
         return (
             <Admin
                 menu={i18nMenuRenderer}
-                messages={messages}
+                i18nProvider={i18nprovider}
                 appLayout={Layout}
                 history={history}
                 loginPage={Login}
@@ -167,8 +168,8 @@ class App extends Component {
                 theme={theme}
                 title="AudienceHero"
                 dashboard={Dashboard}
-                restClient={hydraClient(entrypoint, fetchWithAuth)}
-                authClient={authClient}
+                dataProvider={hydraClient(entrypoint, fetchWithAuth)}
+                authProvider={authClient}
             >
                 {resources.map(item => {
                     return <Resource key={item.name} {...item} />;

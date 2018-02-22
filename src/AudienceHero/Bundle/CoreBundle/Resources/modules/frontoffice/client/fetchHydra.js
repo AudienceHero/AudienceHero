@@ -1,4 +1,4 @@
-import HttpError from 'react-admin/lib/util/HttpError';
+import {HttpError} from 'ra-core';
 import fetchJsonLd from 'api-doc-parser/lib/hydra/fetchJsonLd';
 import { getDocumentationUrlFromHeaders } from 'api-doc-parser/lib/hydra/parseHydraDocumentation';
 import { promises } from 'jsonld';

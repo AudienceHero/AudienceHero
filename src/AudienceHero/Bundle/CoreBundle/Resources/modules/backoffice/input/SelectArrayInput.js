@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash.get';
 import ChipInput from 'material-ui-chip-input';
-import { translate, FieldTitle } from 'react-admin';
+import { addField, translate, FieldTitle } from 'react-admin';
 
 const dataSourceConfig = { text: 'text', value: 'value' };
 
@@ -235,7 +235,6 @@ SelectArrayInput.propTypes = {
 };
 
 SelectArrayInput.defaultProps = {
-    addField: true,
     choices: [],
     onBlur: () => true,
     onChange: () => true,
@@ -246,4 +245,4 @@ SelectArrayInput.defaultProps = {
     translateChoice: true,
 };
 
-export default translate(SelectArrayInput);
+export default translate(addField(SelectArrayInput));
