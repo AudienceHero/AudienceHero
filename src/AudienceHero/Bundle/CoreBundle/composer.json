@@ -16,7 +16,7 @@
   ],
   "require": {
     "php": ">=7.1",
-    "api-platform/core": "^2.0",
+    "api-platform/core": "^2.2",
     "doctrine/doctrine-bundle": "^1.7",
     "ddmaster/postgre-search-bundle": "dev-master",
     "doctrine/doctrine-cache-bundle": "^1.3",
