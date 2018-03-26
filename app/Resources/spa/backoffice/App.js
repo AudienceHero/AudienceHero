@@ -12,8 +12,12 @@ import { Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { Admin, Resource, translate } from 'react-admin';
 import { englishMessages } from 'react-admin';
+import Collapse from 'material-ui/transitions/Collapse';
+import List, {ListItem, ListItemIcon, ListItemText} from 'material-ui/List';
+import ExpandLess from 'material-ui-icons/ExpandLess';
+import ExpandMore from 'material-ui-icons/ExpandMore';
 import { getMuiTheme } from 'material-ui/styles';
-import { Layout, Login, Dashboard } from '@audiencehero-backoffice/core';
+import { Login, Dashboard } from '@audiencehero-backoffice/core';
 import { hydraClient, fetchHydra, authClient } from '@audiencehero/common';
 import {
     menu,
@@ -59,7 +63,7 @@ const history = createBrowserHistory({
 .divider-color         { border-color: #BDBDBD; }
 */
 
-const theme = getMuiTheme();
+// const theme = getMuiTheme();
 
 export const messages = merge({ en: englishMessages }, ...bundleMessages);
 export const i18nprovider = lang => messages[lang];
@@ -73,13 +77,45 @@ const menuItemLinkRenderer = ({
     key,
 }) => (
     <MenuItemLink
-        leftIcon={React.createElement(leftIcon)}
-        primaryText={translate(primaryText)}
-        to={to}
-        onClick={onMenuTap}
         key={key}
+        primaryText={translate(primaryText)}
+        onClick={onMenuTap}
+        to={to}
+        leftIcon={React.createElement(leftIcon)}
     />
 );
+
+export class NestedMenu extends React.Component {
+    state = { open: false };
+
+    handleClick = () => {
+        this.setState({ open: !this.state.open });
+    };
+
+    render() {
+        const {menuItem, onMenuTap, translate} = this.props;
+        const {menuItems} = menuItem;
+
+        return (
+            <div>
+                <MenuItem button onClick={this.handleClick}>
+                    <ListItemIcon>
+                        {React.createElement(menuItem.leftIcon)}
+                    </ListItemIcon>
+                    <ListItemText inset primary={translate(menuItem.primaryText)} />
+                    {this.state.open ? <ExpandLess /> : <ExpandMore />}
+                </MenuItem>
+                <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                    {menuItems.map(subMenu => {
+                        return menuItemLinkRenderer({...subMenu, onMenuTap, key: subMenu.primaryText, translate});
+                    })}
+                    </List>
+                </Collapse>
+            </div>
+        )
+    }
+}
 
 export class MenuRenderer extends React.Component {
     render() {
@@ -90,24 +126,7 @@ export class MenuRenderer extends React.Component {
                 <Divider />
                 {menu.map(menuItem => {
                     if (menuItem.hasOwnProperty('menuItems')) {
-                        return (
-                            <MenuItem
-                                key={menuItem.primaryText}
-                                primaryText={translate(menuItem.primaryText)}
-                                leftIcon={React.createElement(
-                                    menuItem.leftIcon
-                                )}
-                                rightIcon={<IconArrowDropRight />}
-                                menuItems={menuItem.menuItems.map(submenu =>
-                                    menuItemLinkRenderer({
-                                        ...submenu,
-                                        onMenuTap,
-                                        key: submenu.primaryText,
-                                        translate,
-                                    })
-                                )}
-                            />
-                        );
+                        return <NestedMenu key={menuItem.primaryText} menuItem={menuItem} onMenuTap={onMenuTap} translate={translate} />
                     }
 
                     return menuItemLinkRenderer({
@@ -128,18 +147,14 @@ export class MenuRenderer extends React.Component {
                     primaryText: 'ah.core.menu.import',
                 })}
                 <Divider />
-                <MenuItem
-                    primaryText={translate('ah.core.menu.settings')}
-                    leftIcon={<IconSettings />}
-                    rightIcon={<IconArrowDropRight />}
-                    menuItems={settingsMenu.map(submenu =>
-                        menuItemLinkRenderer({
-                            ...submenu,
-                            translate,
-                            onMenuTap,
-                            key: submenu.primaryText,
-                        })
-                    )}
+                <NestedMenu
+                    menuItem={{
+                        primaryText: translate('ah.core.menu.settings'),
+                        leftIcon: IconSettings,
+                        menuItems: settingsMenu
+                    }}
+                    onMenuTap={onMenuTap}
+                    translate={translate}
                 />
                 <Divider />
                 <Divider />
@@ -159,13 +174,13 @@ class App extends Component {
             <Admin
                 menu={i18nMenuRenderer}
                 i18nProvider={i18nprovider}
-                appLayout={Layout}
+                // appLayout={Layout}
                 history={history}
                 loginPage={Login}
                 customRoutes={customRoutes}
                 customReducers={customReducers}
                 customSagas={customSagas}
-                theme={theme}
+                // theme={theme}
                 title="AudienceHero"
                 dashboard={Dashboard}
                 dataProvider={hydraClient(entrypoint, fetchWithAuth)}

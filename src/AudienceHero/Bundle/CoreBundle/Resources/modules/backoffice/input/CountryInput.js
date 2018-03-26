@@ -98,7 +98,6 @@ CountryInput.propTypes = {
 
 const enhance = compose(
     translate,
-    addField,
     connect(
         ({ locale, ah_core }) => ({
             locale,
@@ -110,7 +109,7 @@ const enhance = compose(
     )
 );
 
-const EnhancedCountryInput = enhance(CountryInput);
+const EnhancedCountryInput = addField(enhance(CountryInput));
 
 EnhancedCountryInput.defaultProps = {
     allowEmpty: false,

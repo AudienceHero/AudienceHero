@@ -1,9 +1,8 @@
 import React, { Component, createElement } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {LinearProgress} from 'material-ui/Progress';
-import {withWidth, withStyles, getMuiTheme} from 'material-ui';
+import {withWidth, withStyles, createMuiTheme, getMuiTheme, MuiThemeProvider} from 'material-ui/styles';
 import compose from 'recompose/compose';
 
 import {
@@ -64,7 +63,7 @@ const styles = theme => {
 
 const prefixedStyles = {};
 
-const theme = createMuiTheme({});
+const defaultTheme = createMuiTheme({});
 
 class Layout extends Component {
     componentWillMount() {
@@ -88,39 +87,20 @@ class Layout extends Component {
             width,
         } = this.props;
 
-        const loaderColor = muiTheme.baseTheme.palette.accent1Color;
-        styles.linearLoader = {
-            ...styles.linearLoader,
-            backgroundColor: muiTheme.baseTheme.palette.primary1Color,
-        };
-
         return (
             <MuiThemeProvider theme={theme}>
-                <div style={prefixedStyles.wrapper}>
+                <div className={classes.wrapper}>
                     {isLoading && (
                         <LinearProgress
                             color={loaderColor}
                             mode="indeterminate"
-                            style={styles.linearLoader}
+                            className={classes.linearLoader}
                         />
                     )}
-                    <div style={prefixedStyles.main}>
+                    <div className={classes.main}>
                         {width !== 1 && <AppBar title={title} />}
-                        <div
-                            className="body"
-                            style={
-                                width === 1
-                                    ? prefixedStyles.bodySmall
-                                    : prefixedStyles.body
-                            }
-                        >
-                            <div
-                                style={
-                                    width === 1
-                                        ? prefixedStyles.contentSmall
-                                        : prefixedStyles.content
-                                }
-                            >
+                        <div className={classes.body}>
+                            <div>
                                 <AdminRoutes
                                     customRoutes={customRoutes}
                                     dashboard={dashboard}
@@ -183,7 +163,6 @@ const enhance = compose(
         setSidebarVisibility: setSidebarVisibilityAction,
     }),
     withStyles(styles),
-    withWidth()
 );
 
 export default enhance(Layout);
