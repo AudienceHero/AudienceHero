@@ -407,12 +407,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "320123c27ed17292f0e4b6f8d381679214f88b0c"
+                "reference": "9419fd5b220de184c9501a16ede49a029b94d482"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/320123c27ed17292f0e4b6f8d381679214f88b0c",
-                "reference": "320123c27ed17292f0e4b6f8d381679214f88b0c",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/9419fd5b220de184c9501a16ede49a029b94d482",
+                "reference": "9419fd5b220de184c9501a16ede49a029b94d482",
                 "shasum": ""
             },
             "require": {
@@ -421,7 +421,7 @@
             },
             "require-dev": {
                 "doctrine/cache": "1.*",
-                "phpunit/phpunit": "^6.4"
+                "phpunit/phpunit": "^7.0"
             },
             "type": "library",
             "extra": {
@@ -467,7 +467,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2017-12-10T21:46:52+00:00"
+            "time": "2018-02-04T20:16:08+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -551,19 +551,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "42c4039eca9535e4f201f50d2695648658e9e5a8"
+                "reference": "6a205be3bec4cb49e6a5adcb799a3c79a47aad38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/42c4039eca9535e4f201f50d2695648658e9e5a8",
-                "reference": "42c4039eca9535e4f201f50d2695648658e9e5a8",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/6a205be3bec4cb49e6a5adcb799a3c79a47aad38",
+                "reference": "6a205be3bec4cb49e6a5adcb799a3c79a47aad38",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^1.0",
+                "doctrine/coding-standard": "~2.1.0",
                 "phpunit/phpunit": "^6.3",
                 "squizlabs/php_codesniffer": "^3.0"
             },
@@ -611,7 +611,7 @@
                 "collections",
                 "iterator"
             ],
-            "time": "2017-08-30T09:16:50+00:00"
+            "time": "2018-01-29T06:33:36+00:00"
         },
         {
             "name": "doctrine/common",
@@ -934,18 +934,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "40daa067a3e5fb95572236a346a8290e4445778f"
+                "reference": "87e0271f5a45ae369ff6f5b9297d564edf05755c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/40daa067a3e5fb95572236a346a8290e4445778f",
-                "reference": "40daa067a3e5fb95572236a346a8290e4445778f",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/87e0271f5a45ae369ff6f5b9297d564edf05755c",
+                "reference": "87e0271f5a45ae369ff6f5b9297d564edf05755c",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
             },
             "require-dev": {
+                "doctrine/coding-standard": "^3.0",
                 "phpunit/phpunit": "^6.2"
             },
             "type": "library",
@@ -993,7 +994,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2017-10-04T05:38:52+00:00"
+            "time": "2018-02-08T06:24:48+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -6249,7 +6250,6 @@
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php56": "~1.0",
                 "symfony/polyfill-php70": "~1.0",
-                "symfony/polyfill-util": "~1.0",
                 "twig/twig": "~1.34|~2.4"
             },
             "conflict": {
@@ -10895,75 +10895,6 @@
             "time": "2017-05-04T11:12:50+00:00"
         },
         {
-            "name": "pagerfanta/pagerfanta",
-            "version": "v1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/whiteoctober/Pagerfanta.git",
-                "reference": "29aade64addfdfb12c05aabf160f09d1aea6b143"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/29aade64addfdfb12c05aabf160f09d1aea6b143",
-                "reference": "29aade64addfdfb12c05aabf160f09d1aea6b143",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "doctrine/orm": "~2.3",
-                "doctrine/phpcr-odm": "1.*",
-                "jackalope/jackalope-doctrine-dbal": "1.*",
-                "jmikola/geojson": "~1.0",
-                "mandango/mandango": "~1.0@dev",
-                "mandango/mondator": "~1.0@dev",
-                "phpunit/phpunit": "~4 | ~5",
-                "propel/propel": "~2.0@dev",
-                "propel/propel1": "~1.6",
-                "ruflin/elastica": "~1.3",
-                "solarium/solarium": "~3.1"
-            },
-            "suggest": {
-                "doctrine/mongodb-odm": "To use the DoctrineODMMongoDBAdapter.",
-                "doctrine/orm": "To use the DoctrineORMAdapter.",
-                "doctrine/phpcr-odm": "To use the DoctrineODMPhpcrAdapter. >= 1.1.0",
-                "mandango/mandango": "To use the MandangoAdapter.",
-                "propel/propel": "To use the Propel2Adapter",
-                "propel/propel1": "To use the PropelAdapter",
-                "solarium/solarium": "To use the SolariumAdapter."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Pagerfanta\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pablo Díez",
-                    "email": "pablodip@gmail.com"
-                }
-            ],
-            "description": "Pagination for PHP 5.3",
-            "keywords": [
-                "page",
-                "pagination",
-                "paginator",
-                "paging"
-            ],
-            "time": "2017-03-20T13:46:15+00:00"
-        },
-        {
             "name": "payum/core",
             "version": "dev-master",
             "target-dir": "Payum/Core",
@@ -13130,58 +13061,6 @@
                 "tests"
             ],
             "time": "2017-06-29T19:46:38+00:00"
-        },
-        {
-            "name": "white-october/pagerfanta-bundle",
-            "version": "v1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
-                "reference": "f7e0fdf94a763a21a7c4c36ec9d9b5bcf4e12521"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/f7e0fdf94a763a21a7c4c36ec9d9b5bcf4e12521",
-                "reference": "f7e0fdf94a763a21a7c4c36ec9d9b5bcf4e12521",
-                "shasum": ""
-            },
-            "require": {
-                "pagerfanta/pagerfanta": "1.0.*",
-                "symfony/framework-bundle": "~2.3|~3.0",
-                "symfony/property-access": "~2.3|~3.0",
-                "symfony/twig-bundle": "~2.3|~3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~3.7",
-                "symfony/symfony": "~2.3|~3.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "WhiteOctober\\PagerfantaBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pablo Díez",
-                    "email": "pablodip@gmail.com"
-                }
-            ],
-            "description": "Bundle to use Pagerfanta with Symfony2",
-            "keywords": [
-                "page",
-                "paging"
-            ],
-            "time": "2016-08-04T15:48:14+00:00"
         },
         {
             "name": "zendframework/zend-code",
