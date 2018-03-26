@@ -20,6 +20,8 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class FileWorkflowStepCompiler implements CompilerPassInterface
 {
+    public const TAG = 'audiencehero_file.workflow.step';
+
     public function process(ContainerBuilder $container)
     {
         if (!$container->has(Workflow::class)) {
@@ -27,7 +29,7 @@ class FileWorkflowStepCompiler implements CompilerPassInterface
         }
 
         $workflow = $container->getDefinition(Workflow::class);
-        $taggedServices = $container->findTaggedServiceIds('audiencehero_file.workflow.step');
+        $taggedServices = $container->findTaggedServiceIds(self::TAG);
         foreach ($taggedServices as $id => $tags) {
             $workflow->addMethodCall('addStep', [new Reference($id)]);
         }

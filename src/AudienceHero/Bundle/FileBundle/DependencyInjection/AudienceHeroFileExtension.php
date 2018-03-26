@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace AudienceHero\Bundle\FileBundle\DependencyInjection;
 
+use AudienceHero\Bundle\FileBundle\DependencyInjection\Compiler\FileWorkflowStepCompiler;
 use AudienceHero\Bundle\FileBundle\ETL\Step\StepInterface;
 use AudienceHero\Bundle\FileBundle\Filesystem\FileSystemInterface;
 use AudienceHero\Bundle\FileBundle\Filesystem\LocalFileSystem;
@@ -44,7 +45,7 @@ class AudienceHeroFileExtension extends Extension
         $loader->load('services.yml');
 
         $container->registerForAutoconfiguration(StepInterface::class)
-                  ->addTag('audiencehero_file.workflow.step');
+                  ->addTag(FileWorkflowStepCompiler::TAG);
 
         $s3FileSystem = $container->getDefinition(S3FileSystem::class);
         $localFileSystem = $container->getDefinition(LocalFileSystem::class);
