@@ -22,7 +22,12 @@ The project is organized around a core, with extensions providing several differ
 
 ## Installation
 
-Coming soon.
+1. `composer install`
+2. `yarn`
+3. `./bin/console audiencehero:generate:configuration`
+4. `NODE_ENV=development yarn run encore dev`
+
+At this point, you have all the necessary files to run the projet. You will still need to configure your virtualhost.
 
 ## Documentation
 
