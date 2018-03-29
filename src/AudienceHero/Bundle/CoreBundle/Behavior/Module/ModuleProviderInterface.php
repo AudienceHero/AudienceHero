@@ -27,7 +27,7 @@ interface ModuleProviderInterface
     public function getBackOfficeModule(): ?string;
 
     /**
-     * Returns the name of the javascript module to register for the Backoffice application.
+     * Returns the name of the javascript module to register for the Frontoffice application.
      * Return null in case you don't have any front office module to register.
      */
     public function getFrontOfficeModule(): ?string;
