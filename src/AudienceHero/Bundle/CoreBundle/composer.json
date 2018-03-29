@@ -21,7 +21,8 @@
     "ddmaster/postgre-search-bundle": "dev-master",
     "doctrine/doctrine-cache-bundle": "^1.3",
     "dunglas/doctrine-json-odm": "^0.1.0",
-    "enqueue/amqp-ext": "dev-master",
+    "enqueue/amqp-lib": "dev-master",
+    "enqueue/amqp-tools": "dev-master",
     "enqueue/enqueue-bundle": "dev-master",
     "enqueue/null": "dev-master",
     "friendsofsymfony/user-bundle": "^2.0",
@@ -47,7 +48,12 @@
     "symfony/swiftmailer-bundle": "^2.3.10",
     "umpirsky/country-list": "^2.0",
     "umpirsky/language-list": "dev-master",
-    "willdurand/geocoder-bundle": "^5.0"
+    "willdurand/geocoder-bundle": "^5.0",
+    "symfony/debug-bundle": "^3.3",
+    "symfony/web-profiler-bundle": "^3.3",
+    "symfony/dotenv": "^3.3",
+    "symfony/asset": "^3.3",
+    "symfony/templating": "^3.3"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",

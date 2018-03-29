@@ -20,12 +20,21 @@ The project is organized around a core, with extensions providing several differ
 - PromoBundle: Send unreleased media to people, and gather feedback.
 - SitemapBundle: Generate sitemaps.
 
+
+## Warning
+
+AudienceHero is **alpha software**. Things can be broken, and might change. 
+
 ## Installation
 
 1. `composer install`
 2. `yarn`
 3. `./bin/console audiencehero:generate:configuration`
 4. `NODE_ENV=development yarn run encore dev`
+
+Experimental:
+
+1. docker-compose up
 
 At this point, you have all the necessary files to run the projet. You will still need to configure your virtualhost.
 

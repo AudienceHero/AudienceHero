@@ -1,15 +1,14 @@
 imports:
-    - { resource: parameters.yml }
     - { resource: parameters_assets.yml }
     - { resource: security.yml }
     - { resource: services.yml }
 
 parameters:
-    locale: en
+    env(DATABASE_URL): ''
 
 enqueue:
     transport:
-        default: 'amqp://'
+        default: '%env(RABBITMQ_URL)%'
     client:
         app_name: 'audience_hero'
     async_events: false
@@ -28,8 +27,8 @@ bazinga_geocoder:
                 database_filename: '%kernel.root_dir%/../vendor/geocoder-php/geoip2-provider/Tests/fixtures/GeoLite2-City.mmdb'
 
 framework:
-    translator:      { fallback: "%locale%" }
-    secret:          "%secret%"
+    translator:      { fallback: "%env(LOCALE)%" }
+    secret:          "%env(APP_SECRET)%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
@@ -39,7 +38,7 @@ framework:
         json_manifest_path: '%kernel.project_dir%/web/assets/manifest.json'
     templating:
         engines: ['twig']
-    default_locale:  "%locale%"
+    default_locale:  "%env(LOCALE)%"
     trusted_hosts:   ~
     session:
         metadata_update_threshold: 86400
@@ -61,11 +60,7 @@ twig:
 doctrine:
     dbal:
         driver:   pdo_pgsql
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
+        url: "%env(resolve:DATABASE_URL)%"
         charset:  UTF8
         server_version: 9.4
         types:
@@ -112,11 +107,8 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    url: "%env(MAILER_URL)%"
+    spool: { type: memory }
 
 stof_doctrine_extensions:
     default_locale: en_US
@@ -195,7 +187,7 @@ ewz_recaptcha:
 
 nelmio_cors:
     defaults:
-        allow_origin: ['%cors_allow_origin%']
+        allow_origin: ['%env(CORS_ALLOW_ORIGIN)%']
         allow_methods: ['POST', 'PUT', 'GET', 'DELETE', 'OPTIONS']
         allow_headers: ['content-type', 'authorization']
         expose_headers: ['link']
@@ -214,8 +206,8 @@ nelmio_cors:
 #        public: true
 
 lexik_jwt_authentication:
-    private_key_path: '%jwt_private_key_path%'
-    public_key_path:  '%jwt_public_key_path%'
-    pass_phrase:      '%jwt_key_pass_phrase%'
-    token_ttl:        '%jwt_token_ttl%'
+    private_key_path: '%env(JWT_PRIVATE_KEY_PATH)%'
+    public_key_path:  '%env(JWT_PUBLIC_KEY_PATH)%'
+    pass_phrase:      '%env(JWT_KEY_PASS_PHRASE)%'
+    token_ttl:        '%env(JWT_TOKEN_TTL)%'
 
