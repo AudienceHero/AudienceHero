@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace AudienceHero\Bundle\ContactBundle\Repository;
 
-use AudienceHero\Bundle\CoreBundle\Repository\SearchableRepositoryTrait;
+use AudienceHero\Bundle\CoreBundle\Behavior\Searchable\Repository\SearchableRepositoryTrait;
 use Doctrine\ORM\Query;
 use Happyr\DoctrineSpecification\EntitySpecificationRepository;
 

@@ -1,7 +1,3 @@
-import cyan from 'material-ui/colors/cyan';
-import pink from 'material-ui/colors/pink';
-const cyan500 = cyan['500'];
-const pinkA200 = pink.A200;
 import React from 'react';
 import TextField from 'material-ui/TextField';
 
@@ -28,12 +24,6 @@ export const styles = {
     },
 };
 
-export const getColorsFromTheme = theme => {
-    if (!theme) return { primary1Color: cyan500, accent1Color: pinkA200 };
-    const { palette: { primary1Color, accent1Color } } = theme;
-    return { primary1Color, accent1Color };
-};
-
 // see http://redux-form.com/6.4.3/examples/material-ui/
 export const renderInput = ({
     meta: { touched, error } = {},
@@ -41,7 +31,8 @@ export const renderInput = ({
     ...props
 }) => (
     <TextField
-        errorText={touched && error}
+        error={!!(touched && error)}
+        helperText={touched && error}
         {...inputProps}
         {...props}
         fullWidth

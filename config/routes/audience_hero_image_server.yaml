@@ -1,0 +1,4 @@
+_audience_hero_image_server:
+    resource: "@AudienceHeroImageServerBundle/Action"
+    prefix:   /
+

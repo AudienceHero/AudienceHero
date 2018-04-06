@@ -50,7 +50,7 @@ class AudienceHeroFileExtension extends Extension
         $s3FileSystem = $container->getDefinition(S3FileSystem::class);
         $localFileSystem = $container->getDefinition(LocalFileSystem::class);
 
-        $s3FileSystem->setArgument(1, $container->getParameter('aws_upload_bucket'))
+        $s3FileSystem->setArgument(1, $container->getParameter('env(AWS_UPLOAD_BUCKET)'))
                      ->setArgument(2, $config['base']);
 
         $localFileSystem->setArgument(0, sprintf('%s/%s', $container->getParameter('kernel.project_dir'), 'web'))

@@ -13,12 +13,7 @@ declare(strict_types=1);
 
 namespace AudienceHero\Bundle\ContactBundle\Repository;
 
-use AppBundle\Domain\CsvMatch;
-use AppBundle\Entity\Person;
-use AudienceHero\Bundle\ContactBundle\Entity\Contact;
-use AudienceHero\Bundle\ContactImportCsvBundle\CSV\CsvReader;
-use AudienceHero\Bundle\CoreBundle\Repository\SearchableRepositoryTrait;
-use Doctrine\ORM\NoResultException;
+use AudienceHero\Bundle\CoreBundle\Behavior\Searchable\Repository\SearchableRepositoryTrait;
 use Happyr\DoctrineSpecification\EntitySpecificationRepository;
 
 /**

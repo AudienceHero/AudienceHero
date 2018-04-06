@@ -1,0 +1,4 @@
+_audience_hero_podcast_actions:
+    resource: "@AudienceHeroPodcastBundle/Action"
+    type: annotation
+

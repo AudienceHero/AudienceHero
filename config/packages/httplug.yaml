@@ -1,0 +1,21 @@
+httplug:
+    plugins:
+        logger: ~
+        redirect:
+            preserve_header: true
+
+    discovery:
+        client: 'auto'
+
+    clients:
+        app:
+            http_methods_client: true
+            plugins:
+                - 'httplug.plugin.content_length'
+                - 'httplug.plugin.redirect'
+        default:
+            factory: 'httplug.factory.guzzle6'
+            plugins: ['httplug.plugin.logger']
+        mailgun:
+            factory: 'httplug.factory.guzzle6'
+            plugins: ['httplug.plugin.logger']

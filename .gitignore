@@ -16,15 +16,48 @@ var/sessions/*
 !var/SymfonyRequirements.php
 vendor/
 
-web/bundles/
-web/css
-web/js
-web/fonts
-web/assets
-web/promo_artworks
-web/*.mp3
-web/sitemap.xml
-web/sitemap.*.xml
-web/upload
+public/bundles/
+public/css
+public/js
+public/fonts
+public/assets
+public/promo_artworks
+public/*.mp3
+public/sitemap.xml
+public/sitemap.*.xml
+public/upload
 
 node_modules
+
+###> phpunit/phpunit ###
+/phpunit.xml
+###< phpunit/phpunit ###
+
+###> behat/symfony2-extension ###
+behat.yml
+###< behat/symfony2-extension ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/framework-bundle ###
+/.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###

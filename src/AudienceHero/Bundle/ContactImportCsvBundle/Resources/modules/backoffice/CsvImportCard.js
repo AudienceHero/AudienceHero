@@ -103,12 +103,13 @@ export class CsvImportCard extends React.Component {
 
         return (
             <Card>
-                <CardTitle
+                <CardContent
                     actAsExpander
                     showExpandableButton
-                    title={translate('ah.csv_import.card.title')}
-                    subtitle={translate('ah.csv_import.card.subtitle')}
-                />
+                >
+                    <Typography variant="headline">{translate('ah.csv_import.card.title')}</Typography>
+                    <Typography variant="subheading">{translate('ah.csv_import.card.subtitle')}</Typography>
+                </CardContent>
                 <CardContent expandable={true}>
                     <CsvImportForm>
                         <FileInput

@@ -1,0 +1,4 @@
+_audience_hero_contacts_actions:
+    resource: "@AudienceHeroContactBundle/Action/"
+    type:     annotation
+    prefix:   /

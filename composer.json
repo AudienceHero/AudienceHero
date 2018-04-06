@@ -3,63 +3,43 @@
     "license": "AGPL-3.0-only",
     "type": "project",
     "description": "API centric, multi-tenant, and modular Audience Management System",
-    "autoload": {
-        "psr-4": {
-            "AppBundle\\": "src/AppBundle"
-        },
-        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
+    "config": {
+        "sort-packages": true
     },
     "require": {
+        "php": "^7.1.3",
         "ext-pdo_pgsql": "*",
-        "incenteev/composer-parameter-handler": "^2.0",
-        "twig/extensions": "~1.0",
-        "knplabs/knp-markdown-bundle": "~1.3",
-        "misd/linkify": "~1.1",
-        "league/oauth2-google": "^1.0",
-        "league/oauth2-instagram": "^0.2.0",
-        "cebe/markdown": "^1.1",
-        "mpociot/vat-calculator": "^1.6",
-        "voku/html2text": "^3.1",
-        "guzzlehttp/oauth-subscriber": "0.3.*",
-        "php-http/httplug-bundle": "^1.7",
-        "php-http/guzzle6-adapter": "^1.1",
-        "php-http/discovery": "^1.2",
         "wikimedia/composer-merge-plugin": "^1.3@dev",
-        "symfony/web-server-bundle": "^3.3"
+        "symfony/web-server-bundle": "^3.4",
+        "symfony/flex": "^1.0@dev"
+    },
+    "conflict": {
+        "symfony/symfony": "*"
     },
     "require-dev": {
+        "symfony/dotenv": "^4.0",
+        "roave/security-advisories": "dev-master",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "consolidation/robo": "^1.0.5",
         "friendsofphp/php-cs-fixer": "^2.0"
     },
     "scripts": {
+        "auto-scripts": [
+        ],
         "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "@auto-scripts"
         ],
         "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "@auto-scripts"
         ]
     },
+    "replace": {
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php71": "*",
+        "symfony/polyfill-php70": "*",
+        "symfony/polyfill-php56": "*"
+    },
     "extra": {
-        "symfony-app-dir": "app",
-        "symfony-bin-dir": "bin",
-        "symfony-var-dir": "var",
-        "symfony-web-dir": "web",
-        "symfony-tests-dir": "tests",
-        "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
         "merge-plugin": {
             "include": [
                 "src/AudienceHero/Bundle/*/composer.json"
@@ -71,6 +51,9 @@
             "merge-extra": false,
             "merge-extra-deep": false,
             "merge-scripts": false
+        },
+        "symfony": {
+            "allow-contrib": false
         }
     },
     "minimum-stability": "dev"

@@ -13,8 +13,8 @@ namespace AudienceHero\Bundle\AcquisitionFreeDownloadBundle\Tests\Repository;
 
 use AudienceHero\Bundle\AcquisitionFreeDownloadBundle\Repository\AcquisitionFreeDownloadRepository;
 use AudienceHero\Bundle\ActivityBundle\Repository\EntityCollectionBuilderRepositoryTrait;
-use AudienceHero\Bundle\CoreBundle\Repository\PublishableEntityRepositoryTrait;
-use AudienceHero\Bundle\CoreBundle\Repository\SearchableRepositoryTrait;
+use AudienceHero\Bundle\CoreBundle\Behavior\Publishable\Repository\PublishableEntityRepositoryTrait;
+use AudienceHero\Bundle\CoreBundle\Behavior\Searchable\Repository\SearchableRepositoryTrait;
 use PHPUnit\Framework\TestCase;
 
 class AcquisitionFreeDownloadRepositoryTest extends TestCase

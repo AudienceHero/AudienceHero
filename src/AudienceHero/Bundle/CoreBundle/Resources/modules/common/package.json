@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "lodash.merge": "^4.6.0",
-    "material-ui": "^1.0.0-beta.21",
-    "material-ui-icons": "^1.0.0-beta.17"
+    "material-ui": "^1.0.0-beta.45",
+    "material-ui-icons": "^1.0.0-beta.36"
   }
 }

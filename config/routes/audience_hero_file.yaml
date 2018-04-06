@@ -1,0 +1,7 @@
+_audience_hero_file_action:
+    resource: "@AudienceHeroFileBundle/Action"
+    type: annotation
+
+_audience_hero_file_controller:
+    resource: "@AudienceHeroFileBundle/Controller"
+    type: annotation

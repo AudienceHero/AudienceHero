@@ -9,6 +9,6 @@
     },
     "require": {
         "league/csv": "^9.0",
-        "voku/portable-utf8": "~3.0"
+        "voku/portable-utf8": "^5.0"
     }
 }

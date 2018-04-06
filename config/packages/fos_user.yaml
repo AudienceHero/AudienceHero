@@ -1,0 +1,19 @@
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AudienceHero\Bundle\CoreBundle\Entity\User
+    use_listener: true
+    use_flash_notifications: true
+    service:
+        mailer: AudienceHero\Bundle\CoreBundle\Bridge\FOS\UserBundle\Mailer\FOSUserMailer
+    from_email:
+        address: contact@audiencehero.org
+        sender_name: AudienceHero
+    registration:
+        confirmation:
+            enabled: true
+            template: UserBundle:Registration:email.html.twig
+    resetting:
+        token_ttl: 86400
+        email:
+            template: UserBundle:Resetting:email.html.twig

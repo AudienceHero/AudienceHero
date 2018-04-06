@@ -1,6 +1,6 @@
-import authClient from './authClient';
+import authProvider from './authProvider';
 import fetchHydra from './fetchHydra';
 import hydraClient, { ACTION, transformJsonLdToAOR } from './hydraClient';
 
 export * from './violations';
-export { authClient, fetchHydra, hydraClient, ACTION, transformJsonLdToAOR };
+export { authProvider, fetchHydra, hydraClient, ACTION, transformJsonLdToAOR };

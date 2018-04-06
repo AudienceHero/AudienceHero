@@ -10,15 +10,12 @@ import {
 import {
     Button,
     Card,
-    CardText,
-    CardTitle,
+    CardContent,
     Table,
     TableBody,
-    TableHeader,
+    TableHead,
     TableRow,
-    TableRowColumn,
-    TableHeaderColumn,
-    SelectField,
+    Select,
     MenuItem,
 } from 'material-ui';
 import { importCsvContacts as importCsvContactsAction } from './actions';
@@ -29,7 +26,7 @@ const renderSelect = (muiTheme, choices, translate) => props => {
     const { input, meta: { touched, error } } = props;
 
     return (
-        <SelectField
+        <Select
             onChange={(e, k, v) => {
                 input.onChange(v);
             }}
@@ -45,7 +42,7 @@ const renderSelect = (muiTheme, choices, translate) => props => {
                     primaryText={translate(`ah.csv_import.column.${item}`)}
                 />
             ))}
-        </SelectField>
+        </Select>
     );
 };
 
@@ -74,9 +71,9 @@ export class BaseForm extends React.Component {
             >
                 {header.map(key => {
                     return (
-                        <TableRowColumn style={style} key={key}>
+                        <TableCell style={style} key={key}>
                             {key}
-                        </TableRowColumn>
+                        </TableCell>
                     );
                 })}
             </TableRow>
@@ -87,9 +84,9 @@ export class BaseForm extends React.Component {
             const columns = [];
             for (const key of header) {
                 columns.push(
-                    <TableRowColumn style={style} key={key}>
+                    <TableCell style={style} key={key}>
                         {extract[key]}
-                    </TableRowColumn>
+                    </TableCell>
                 );
             }
             rows.push(
@@ -115,7 +112,7 @@ export class BaseForm extends React.Component {
         const columns = [];
         Object.keys(contact_matches).forEach(key => {
             columns.push(
-                <TableHeaderColumn key={key} style={style}>
+                <TableCell key={key} style={style}>
                     <Field
                         name={key}
                         type="text"
@@ -125,7 +122,7 @@ export class BaseForm extends React.Component {
                             translate
                         )}
                     />
-                </TableHeaderColumn>
+                </TableCell>
             );
         });
 
@@ -143,9 +140,9 @@ export class BaseForm extends React.Component {
                         borderCollapse: 'separate',
                     }}
                 >
-                    <TableHeader displaySelectAll={false}>
+                    <TableHead displaySelectAll={false}>
                         {this.renderTableHeader()}
-                    </TableHeader>
+                    </TableHead>
                     <TableBody displayRowCheckbox={false}>
                         {this.renderTableRows()}
                     </TableBody>
@@ -244,17 +241,17 @@ export class CsvContactImport extends React.Component {
 
         return (
             <Card>
-                <CardTitle
-                    title={translate('ah.csv_import.match.title')}
-                    subtitle={translate('ah.csv_import.match.subtitle')}
-                />
-                <CardText>
+                <CardContent>
+                    <Typography gutterBottom variant="headline" component="h2">{translate('ah.csv_import.match.title')}</Typography>
+                    <Typography component="p">{translate('ah.csv_import.match.subtitle')}</Typography>
+                </CardContent>
+                <CardContent>
                     <Form
                         onSubmit={this.submit}
                         metadata={metadata}
                         initialValues={metadata.contact_matches}
                     />
-                </CardText>
+                </CardContent>
             </Card>
         );
     }

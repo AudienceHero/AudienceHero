@@ -1,0 +1,7 @@
+audience_hero_core:
+    mailer:
+        adapter: swiftmailer
+        mailgun:
+            api_key: "%env(MAILGUN_API_KEY)%"
+            domain: 'audiencehero.org'
+            is_test_delivery: true

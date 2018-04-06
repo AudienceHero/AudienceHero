@@ -1,0 +1,10 @@
+enqueue:
+    transport:
+        default: '%env(ENQUEUE_DSN)%'
+    client: ~
+    async_events: false
+    extensions:
+        doctrine_ping_connection_extension: false
+        doctrine_clear_identity_map_extension: true
+        signal_extension: true
+        reply_extension: true

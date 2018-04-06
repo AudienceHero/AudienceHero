@@ -1,0 +1,3 @@
+_audience_hero_mailing_actions:
+    resource: "@AudienceHeroMailingCampaignBundle/Action/"
+    type: annotation

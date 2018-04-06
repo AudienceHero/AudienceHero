@@ -1,0 +1,4 @@
+_audience_hero_promo_action:
+    resource: "@AudienceHeroPromoBundle/Action"
+    type: annotation
+

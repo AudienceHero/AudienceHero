@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace AudienceHero\Bundle\PodcastBundle\Repository;
 
 use AudienceHero\Bundle\ActivityBundle\Repository\EntityCollectionBuilderRepositoryTrait;
-use AudienceHero\Bundle\CoreBundle\Repository\PublishableEntityRepositoryTrait;
-use AudienceHero\Bundle\CoreBundle\Repository\SearchableRepositoryTrait;
+use AudienceHero\Bundle\CoreBundle\Behavior\Publishable\Repository\PublishableEntityRepositoryTrait;
+use AudienceHero\Bundle\CoreBundle\Behavior\Searchable\Repository\SearchableRepositoryTrait;
 use Happyr\DoctrineSpecification\EntitySpecificationRepository;
 
 class PodcastChannelRepository extends EntitySpecificationRepository

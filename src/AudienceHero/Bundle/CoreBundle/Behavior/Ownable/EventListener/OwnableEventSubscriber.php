@@ -61,7 +61,7 @@ class OwnableEventSubscriber implements EventSubscriberInterface
     public function onDeserializeOwnable(GetResponseEvent $event)
     {
         $request = $event->getRequest();
-        if ($request->isMethodSafe() || $request->isMethod(Request::METHOD_DELETE)) {
+        if ($request->isMethodIdempotent() || $request->isMethod(Request::METHOD_DELETE)) {
             return;
         }
 
