@@ -1,6 +1,6 @@
 {
   "name": "audiencehero/core-bundle",
-  "license": "AGPL",
+  "license": "MIT",
   "description": "AudienceHero is an API centric Audience Management System.",
   "type": "symfony-bundle",
   "autoload": {

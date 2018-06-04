@@ -1,6 +1,6 @@
 {
     "name": "audiencehero/audiencehero",
-    "license": "AGPL-3.0-only",
+    "license": "MIT",
     "type": "project",
     "description": "API centric, multi-tenant, and modular Audience Management System",
     "config": {
