@@ -9,7 +9,7 @@ What is AudienceHero?
 =====================
 
 AudienceHero is a modular API-Centric Audience Management System.
-AudienceHero is a free (as in speech, and as in beer) software licensed under the Affero General Public License.
+AudienceHero is a free (as in speech, and as in beer) software licensed under the MIT License.
 
 Wait! What?
 -----------
