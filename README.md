@@ -65,4 +65,4 @@ AudienceHero has been created by [Marc Weistroff](https://marc.weistroff.net).
 
 ## Licensing
 
-AudienceHero is an Open Source software, released under the Affero General Public License. 
+AudienceHero is an Open Source software, released under the MIT License. 
